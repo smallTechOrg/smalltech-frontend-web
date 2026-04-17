@@ -6,7 +6,6 @@ on:
       - staging
 
 
-
 permissions:
   contents: read
   pages: write
@@ -68,6 +67,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
     
+        
   deploy-staging-vercel:
     if: github.ref_name == 'staging'
     environment: staging
