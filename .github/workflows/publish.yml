@@ -30,7 +30,7 @@ jobs:
 
       - name: Create .env.production file 📝
         run: |
-          echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production
+          echo "NEXT_PUBLIC_EMBED_BASE_URL=${{ vars.NEXT_PUBLIC_EMBED_BASE_URL }}" > .env.production
         working-directory: ./code
 
 
@@ -86,10 +86,6 @@ jobs:
         id: deploy
         run: |
           echo "url=$(vercel deploy --prod --yes \
-            --build-env NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
+            --build-env NEXT_PUBLIC_EMBED_BASE_URL=${{ vars.NEXT_PUBLIC_EMBED_BASE_URL }} \
             --token=${{ vars.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
         working-directory: ./code
-      - name: Alias to Staging Domain 🔗
-        run: vercel alias set ${{ steps.deploy.outputs.url }} ${{ vars.STAGING_DOMAIN }} --token=${{ vars.VERCEL_TOKEN }}
-        working-directory: ./code
-
