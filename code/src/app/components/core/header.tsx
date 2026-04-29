@@ -17,7 +17,7 @@ export default function Header() {
       <div className="flex flex-col leading-none">
         <h1 className="text-[32px] leading-none">smallTech</h1>
         <h3 className="text-liver-brown font-[200] text-[16px] leading-none">
-          a madhyamakist enterprise
+          replicable success
         </h3>
       </div>
 
