@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - deploy
+      - staging
 
 
 permissions:
@@ -14,11 +14,11 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
 
-    env:
-      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-      NEXT_PUBLIC_EMBED_BASE_URL: ${{secrets.NEXT_PUBLIC_EMBED_BASE_URL}}
+    if: github.ref_name == 'main'
+    environment: production
+    
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout 🛎️
@@ -27,6 +27,11 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
+
+      - name: Create .env.production file 📝
+        run: |
+          echo "NEXT_PUBLIC_EMBED_BASE_URL=${{ vars.NEXT_PUBLIC_EMBED_BASE_URL }}" > .env.production
+        working-directory: ./code
 
 
       - name: Setup Pages ⚙️
@@ -47,8 +52,9 @@ jobs:
 
 
   deploy:
+    if: github.ref_name == 'main'
     environment:
-      name: github-pages
+      name: production
       url: ${{ steps.deployment.outputs.page_url }}
 
 
@@ -60,4 +66,26 @@ jobs:
       - name: Publish to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4
-
+    
+        
+  deploy-staging-vercel:
+    if: github.ref_name == 'staging'
+    environment: staging
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+      - name: Install Vercel CLI ⚙️
+        run: npm install --global vercel@latest
+      - name: Deploy Staging to Vercel 🚀
+        id: deploy
+        run: |
+          echo "url=$(vercel deploy --prod --yes \
+            --build-env NEXT_PUBLIC_EMBED_BASE_URL=${{ vars.NEXT_PUBLIC_EMBED_BASE_URL }} \
+            --token=${{ vars.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+        working-directory: ./code
