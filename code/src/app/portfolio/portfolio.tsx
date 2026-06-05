@@ -29,12 +29,22 @@ export default function Portfolio() {
         "
         />
         <Box
-          image="/blog.svg"
-          title="@str@"
-          subtitle="AI-Driven Content and Marketing"
-          description="Astra is our in-house Content Writer, Social Media Manager, SEO Specialist, and our resident Comedian"
-          buttonText="Visit Blog"
-          onButtonClick={() => window.open("https://aiblog.smalltech.in", "_blank")}
+          image="/shop.svg"
+          title="Baamboojah"
+          subtitle="E-commerce for artisanal and handcrafted products"
+          description="Custom designed, end to end e-commerce platform for Baamboojah, focused on selling soulful products to the world. "
+          buttonText="Visit Baamboojah"
+          onButtonClick={() => window.open("https://baamboojah.com", "_blank")}
+          className="w-full max-w-[350px]
+        "
+        />
+        <Box
+          image="/workshop.svg"
+          title="AI Workshop with UP Police"
+          subtitle="To walk hand in hand with AI"
+          description="Conducted a workshop to talk about AI, agents, and how it can be leveraged in their operations. It covered AI pipelines, learning calendar, and ethical considerations."
+          buttonText="Learn More"
+          onButtonClick={() => window.open("https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", "_blank")}
           className="w-full max-w-[350px]
         "
         />
