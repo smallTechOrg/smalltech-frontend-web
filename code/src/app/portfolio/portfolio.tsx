@@ -98,8 +98,7 @@ export default function Portfolio() {
                 className="
                   flex flex-row items-center gap-3
                   rounded-[20px]
-                  bg-[linear-gradient(145deg,#F7EDEB_0%,#E8D0CC_100%)]
-                  shadow-[0_8px_32px_0_rgba(90,42,39,0.15),0_2px_8px_0_rgba(0,0,0,0.08)]
+                  bg-transparent
                   px-5 py-4 mx-4 shrink-0
                   border-0 cursor-pointer
                 "
