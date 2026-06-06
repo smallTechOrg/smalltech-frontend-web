@@ -22,8 +22,13 @@ const products = [
 ];
 
 const clients = [
-  { name: "Baamboojah", logo: "/baamboojah-logo.svg", url: "https://baamboojah.com" },
-  { name: "UP Police", logo: "/up police.png", url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl" },
+  { name: "Baamboojah", logo: "/baamboojah-logo.svg", url: "https://baamboojah.com", showName: true,  logoW: 44,  logoH: 44  },
+  { name: "UP Police",   logo: "/up police.png",        url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", showName: true,  logoW: 44,  logoH: 44  },
+  { name: "Canvs",       logo: "/canvs.jpeg",           url: "", showName: true,  logoW: 44,  logoH: 44  },
+  { name: "Swiggy",      logo: "/swiggy.png",           url: "", showName: true, logoW: 44, logoH: 44  },
+  { name: "MediBuddy",   logo: "/medibuddy.png",        url: "", showName: true, logoW: 44, logoH: 44  },
+  { name: "Super Procure", logo: "/super procure.png",  url: "", showName: false, logoW: 140, logoH: 50  },
+  { name: "Loblaws",     logo: "/loblaws.png",          url: "", showName: false, logoW: 140, logoH: 50  },
 ];
 
 export default function Portfolio() {
@@ -82,11 +87,11 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Partner Clients */}
+      {/* Brands */}
       <div className="mt-10">
         <h2 className="text-expresso font-[500]">Partner Clients</h2>
         <p className="text-liver-brown font-[300] mt-1 mb-8">
-          Organisations we have built for and collaborated with.
+          Brands our team has worked with.
         </p>
 
         <div className="relative overflow-hidden h-[90px]">
@@ -94,27 +99,29 @@ export default function Portfolio() {
             {Array.from({ length: 10 }, () => clients).flat().map((client, i) => (
               <button
                 key={i}
-                onClick={() => window.open(client.url, "_blank")}
-                className="
+                onClick={() => client.url && window.open(client.url, "_blank")}
+                className={`
                   flex flex-row items-center gap-3
                   rounded-[20px]
                   bg-transparent
                   px-5 py-4 mx-4 shrink-0
-                  border-0 cursor-pointer
-                "
+                  border-0 ${client.url ? "cursor-pointer" : "cursor-default"}
+                `}
               >
                 <Image
                   src={client.logo}
                   alt={client.name}
-                  width={44}
-                  height={44}
+                  width={client.logoW}
+                  height={client.logoH}
                   className="object-contain shrink-0"
-                  style={{ width: 44, height: 44 }}
+                  style={{ width: client.logoW, height: client.logoH }}
                   loading="eager"
                 />
-                <span className="text-xs font-[600] tracking-wide text-expresso whitespace-nowrap">
-                  {client.name}
-                </span>
+                {client.showName && (
+                  <span className="text-xs font-[600] tracking-wide text-expresso whitespace-nowrap">
+                    {client.name}
+                  </span>
+                )}
               </button>
             ))}
           </div>
