@@ -31,6 +31,34 @@ const clients = [
   { name: "Loblaws",     logo: "/loblaws.png",          url: "", showName: false, logoW: 140, logoH: 50  },
 ];
 
+type Client = typeof clients[number];
+
+function ClientLogo({ client, small = false }: { client: Client; small?: boolean }) {
+  const w = small ? Math.round(client.logoW * 0.75) : client.logoW;
+  const h = small ? Math.round(client.logoH * 0.75) : client.logoH;
+  return (
+    <button
+      onClick={() => client.url && window.open(client.url, "_blank")}
+      className={`flex flex-row items-center gap-3 rounded-[20px] bg-transparent px-4 py-3 mx-3 shrink-0 border-0 ${client.url ? "cursor-pointer" : "cursor-default"}`}
+    >
+      <Image
+        src={client.logo}
+        alt={client.name}
+        width={w}
+        height={h}
+        className="object-contain shrink-0"
+        style={{ width: w, height: h }}
+        loading="eager"
+      />
+      {client.showName && (
+        <span className="text-xs font-[600] tracking-wide text-expresso whitespace-nowrap">
+          {client.name}
+        </span>
+      )}
+    </button>
+  );
+}
+
 export default function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-hidden px-[3%] pt-3">
@@ -94,37 +122,29 @@ export default function Portfolio() {
           Brands our team has worked with.
         </p>
 
-        <div className="relative overflow-hidden h-[90px]">
+        {/* Desktop: single row */}
+        <div className="hidden md:block relative overflow-hidden h-[90px]">
           <div className="absolute flex animate-marquee top-0 left-0" style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}>
             {Array.from({ length: 10 }, () => clients).flat().map((client, i) => (
-              <button
-                key={i}
-                onClick={() => client.url && window.open(client.url, "_blank")}
-                className={`
-                  flex flex-row items-center gap-3
-                  rounded-[20px]
-                  bg-transparent
-                  px-5 py-4 mx-4 shrink-0
-                  border-0 ${client.url ? "cursor-pointer" : "cursor-default"}
-                `}
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={client.logoW}
-                  height={client.logoH}
-                  className="object-contain shrink-0"
-                  style={{ width: client.logoW, height: client.logoH }}
-                  loading="eager"
-                />
-                {client.showName && (
-                  <span className="text-xs font-[600] tracking-wide text-expresso whitespace-nowrap">
-                    {client.name}
-                  </span>
-                )}
-              </button>
+              <ClientLogo key={i} client={client} />
             ))}
           </div>
+        </div>
+
+        {/* Mobile: two rows */}
+        <div className="md:hidden flex flex-col gap-3">
+          {[clients.filter((_, i) => i % 2 === 0), clients.filter((_, i) => i % 2 !== 0)].map((row, rowIdx) => (
+            <div key={rowIdx} className="relative overflow-hidden h-[72px]">
+              <div
+                className={`absolute flex top-0 left-0 ${rowIdx === 0 ? "animate-marquee" : "animate-marquee-reverse"}`}
+                style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}
+              >
+                {Array.from({ length: 10 }, () => row).flat().map((client, i) => (
+                  <ClientLogo key={i} client={client} small />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
