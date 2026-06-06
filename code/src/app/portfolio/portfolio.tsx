@@ -117,9 +117,9 @@ export default function Portfolio() {
 
       {/* Brands */}
       <div className="mt-10">
-        <h2 className="text-expresso font-[500]">Partner Clients</h2>
+        <h2 className="text-expresso font-[500]">Brands</h2>
         <p className="text-liver-brown font-[300] mt-1 mb-8">
-          Brands our team has worked with.
+          Brands our team has worked with
         </p>
 
         {/* Desktop: single row */}
