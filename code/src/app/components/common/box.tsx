@@ -71,7 +71,7 @@ export default function Box({ image,
 
         {/* DESCRIPTION (only desktop) */}
         {description && (
-          <p className="font-[300] text-liver-brown mt-12 hidden md:block">
+          <p className="font-[300] text-liver-brown mt-3 hidden md:block">
             {description}
           </p>
         )}
