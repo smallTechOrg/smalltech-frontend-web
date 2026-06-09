@@ -4,11 +4,7 @@ import { Button } from "../components/common/button";
 
 const products = [
   {
-<<<<<<< HEAD
     image: "/zero.svg",
-=======
-    image: "/sales.svg",
->>>>>>> main
     title: "Zer0",
     subtitle: "AI Agents for Small Businesses",
     description: "Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI.",
@@ -16,11 +12,7 @@ const products = [
     url: "https://zero.smalltech.in",
   },
   {
-<<<<<<< HEAD
     image: "/local.png",
-=======
-    image: "/app.svg",
->>>>>>> main
     title: "#local",
     subtitle: "Location Based Community Platform",
     description: "It is the fastest way to report local potholes, illegal dumping, broken lights, and other civic issues directly to your local government.",
