@@ -14,13 +14,12 @@ export default function Box({ image,
   return (
     <div
       className={`
-        relative  
-        rounded-[30px] 
+        relative
+        rounded-[30px]
         bg-[linear-gradient(to_bottom,#F2E3E1_0%,#DBC2BD_100%)]
-        shadow-[0_3px_20px_0_rgba(0,0,0,0.4)]
         md:p-6 p-4
-        flex flex-col md:flex-col 
-        md:items-center 
+        flex flex-col md:flex-col
+        md:items-center
         md:text-center
         text-left
         my-3
@@ -29,22 +28,19 @@ export default function Box({ image,
     >
 
       {/* MOBILE LAYOUT */}
-      <div className="flex md:hidden flex-row items-center gap-4">
+      <div className="flex md:hidden flex-row items-start gap-4">
         <Image
           src={image}
           alt={title}
           width={80}
           height={80}
-          className="object-contain"
+          className="object-contain w-20 h-20 shrink-0"
         />
-
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col flex-1">
           <h3 className="font-semibold text-expresso">{title}</h3>
           <p className="text-liver-brown text-sm">{subtitle}</p>
-
-          
           {buttonText && (
-            <div className="mt-4">
+            <div className="mt-4 flex justify-center -ml-12">
               <Button onClick={onButtonClick} text={buttonText} />
             </div>
           )}
