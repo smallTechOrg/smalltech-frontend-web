@@ -4,7 +4,7 @@ import { Button } from "../components/common/button";
 
 const products = [
   {
-    image: "/sales.svg",
+    image: "/zero.svg",
     title: "Zer0",
     subtitle: "AI Agents for Small Businesses",
     description: "Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI.",
@@ -12,7 +12,7 @@ const products = [
     url: "https://zero.smalltech.in",
   },
   {
-    image: "/app.svg",
+    image: "/local.png",
     title: "#local",
     subtitle: "Location Based Community Platform",
     description: "It is the fastest way to report local potholes, illegal dumping, broken lights, and other civic issues directly to your local government.",
@@ -22,13 +22,13 @@ const products = [
 ];
 
 const clients = [
-  { name: "Baamboojah", logo: "/baamboojah-logo.svg", url: "https://baamboojah.com", showName: true,  logoW: 44,  logoH: 44  },
-  { name: "UP Police",   logo: "/up police.png",        url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", showName: true,  logoW: 44,  logoH: 44  },
-  { name: "Canvs",       logo: "/canvs.jpeg",           url: "", showName: true,  logoW: 44,  logoH: 44  },
-  { name: "Swiggy",      logo: "/swiggy.png",           url: "", showName: true, logoW: 44, logoH: 44  },
-  { name: "MediBuddy",   logo: "/medibuddy.png",        url: "", showName: true, logoW: 44, logoH: 44  },
-  { name: "Super Procure", logo: "/super procure.png",  url: "", showName: false, logoW: 140, logoH: 50  },
-  { name: "Loblaws",     logo: "/loblaws.png",          url: "", showName: false, logoW: 140, logoH: 50  },
+  { name: "Baamboojah", logo: "/baamboojah-logo.svg", url: "https://baamboojah.com", showName: false,  logoW: 90,  logoH: 90  },
+  { name: "UP Police",   logo: "/up police.png",        url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", showName: false,  logoW: 90,  logoH: 90  },
+  { name: "Canvs",       logo: "/canvs.jpeg",           url: "", showName: false,  logoW: 90,  logoH: 90  },
+  { name: "Swiggy",      logo: "/swiggy.png",           url: "", showName: false, logoW: 90, logoH: 90  },
+  { name: "MediBuddy",   logo: "/medibuddy.png",        url: "", showName: false, logoW: 90, logoH: 90  },
+  { name: "Super Procure", logo: "/super procure.png",  url: "", showName: false, logoW: 220, logoH: 90  },
+  { name: "Loblaws",     logo: "/loblaws.png",          url: "", showName: false, logoW: 220, logoH: 90  },
 ];
 
 type Client = typeof clients[number];
@@ -39,7 +39,7 @@ function ClientLogo({ client, small = false }: { client: Client; small?: boolean
   return (
     <button
       onClick={() => client.url && window.open(client.url, "_blank")}
-      className={`flex flex-row items-center gap-3 rounded-[20px] bg-transparent px-4 py-3 mx-3 shrink-0 border-0 ${client.url ? "cursor-pointer" : "cursor-default"}`}
+      className={`flex flex-row justify-center items-center rounded-[20px] bg-transparent w-[260px] py-3 mx-2 shrink-0 border-0 ${client.url ? "cursor-pointer" : "cursor-default"}`}
     >
       <Image
         src={client.logo}
@@ -122,19 +122,21 @@ export default function Portfolio() {
           Brands our team has worked with
         </p>
 
-        {/* Desktop: single row */}
-        <div className="hidden md:block relative overflow-hidden h-[90px]">
-          <div className="absolute flex animate-marquee top-0 left-0" style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}>
-            {Array.from({ length: 10 }, () => clients).flat().map((client, i) => (
-              <ClientLogo key={i} client={client} />
-            ))}
+        {/* Desktop: one row, full size */}
+        <div className="hidden md:flex flex-col gap-3">
+          <div className="brands-row relative overflow-hidden h-[120px]">
+            <div className="absolute flex animate-marquee top-0 left-0" style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}>
+              {Array.from({ length: 10 }, () => clients).flat().map((client, i) => (
+                <ClientLogo key={i} client={client} />
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Mobile: two rows */}
+        {/* Mobile: two rows, small size */}
         <div className="md:hidden flex flex-col gap-3">
-          {[clients.filter((_, i) => i % 2 === 0), clients.filter((_, i) => i % 2 !== 0)].map((row, rowIdx) => (
-            <div key={rowIdx} className="relative overflow-hidden h-[72px]">
+          {[clients, [...clients].reverse()].map((row, rowIdx) => (
+            <div key={rowIdx} className="brands-row relative overflow-hidden h-[90px]">
               <div
                 className={`absolute flex top-0 left-0 ${rowIdx === 0 ? "animate-marquee" : "animate-marquee-reverse"}`}
                 style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}

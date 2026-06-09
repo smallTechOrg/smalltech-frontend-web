@@ -15,8 +15,20 @@ export default function EmbedScript() {
 
     document.body.appendChild(script);
 
+    const taglineTimer = setTimeout(() => {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.textContent?.trim() === 'Talk To Us') {
+          const el = node.parentElement;
+          if (el) el.style.display = 'none';
+        }
+      }
+    }, 10000);
+
     // Cleanup function to remove the script when component unmounts
     return () => {
+      clearTimeout(taglineTimer);
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
