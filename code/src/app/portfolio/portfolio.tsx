@@ -24,11 +24,12 @@ const products = [
 const clients = [
   { name: "Baamboojah", logo: "/baamboojah-logo.svg", url: "https://baamboojah.com", showName: false,  logoW: 90,  logoH: 90  },
   { name: "UP Police",   logo: "/up police.png",        url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", showName: false,  logoW: 90,  logoH: 90  },
-  { name: "Canvs",       logo: "/canvs.jpeg",           url: "", showName: false,  logoW: 90,  logoH: 90  },
+  { name: "Canvs",       logo: "/canvs.svg",            url: "", showName: false,  logoW: 180, logoH: 43  },
   { name: "Swiggy",      logo: "/swiggy.png",           url: "", showName: false, logoW: 90, logoH: 90  },
   { name: "MediBuddy",   logo: "/medibuddy.png",        url: "", showName: false, logoW: 90, logoH: 90  },
   { name: "Super Procure", logo: "/super procure.png",  url: "", showName: false, logoW: 220, logoH: 90  },
-  { name: "Loblaws",     logo: "/loblaws.png",          url: "", showName: false, logoW: 220, logoH: 90  },
+  { name: "Loblaws",     logo: "/loblaws.svg",           url: "", showName: false, logoW: 220, logoH: 38  },
+  { name: "Digital Futurists", logo: "/df.png",         url: "", showName: false, logoW: 180, logoH: 50  },
 ];
 
 type Client = typeof clients[number];
@@ -122,15 +123,20 @@ export default function Portfolio() {
           Brands our team has worked with
         </p>
 
-        {/* Desktop: one row, full size */}
+        {/* Desktop: two rows, full size */}
         <div className="hidden md:flex flex-col gap-3">
-          <div className="brands-row relative overflow-hidden h-[120px]">
-            <div className="absolute flex animate-marquee top-0 left-0" style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}>
-              {Array.from({ length: 10 }, () => clients).flat().map((client, i) => (
-                <ClientLogo key={i} client={client} />
-              ))}
+          {[clients, [...clients].reverse()].map((row, rowIdx) => (
+            <div key={rowIdx} className="brands-row relative overflow-hidden h-[120px]">
+              <div
+                className={`absolute flex top-0 left-0 ${rowIdx === 0 ? "animate-marquee" : "animate-marquee-reverse"}`}
+                style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}
+              >
+                {Array.from({ length: 10 }, () => row).flat().map((client, i) => (
+                  <ClientLogo key={i} client={client} />
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Mobile: two rows, small size */}
