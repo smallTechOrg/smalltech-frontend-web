@@ -34,12 +34,12 @@ const clients = [
 type Client = typeof clients[number];
 
 function ClientLogo({ client, small = false }: { client: Client; small?: boolean }) {
-  const w = small ? Math.round(client.logoW * 0.75) : client.logoW;
-  const h = small ? Math.round(client.logoH * 0.75) : client.logoH;
+  const w = small ? Math.round(client.logoW * 0.68) : client.logoW;
+  const h = small ? Math.round(client.logoH * 0.68) : client.logoH;
   return (
     <button
       onClick={() => client.url && window.open(client.url, "_blank")}
-      className={`flex flex-row justify-center items-center rounded-[20px] bg-transparent w-[260px] py-3 mx-2 shrink-0 border-0 ${client.url ? "cursor-pointer" : "cursor-default"}`}
+      className={`flex flex-row justify-center items-center rounded-[20px] bg-transparent w-[170px] md:w-[260px] py-1 md:py-3 mx-0 md:mx-2 shrink-0 border-0 ${client.url ? "cursor-pointer" : "cursor-default"}`}
     >
       <Image
         src={client.logo}
@@ -107,7 +107,7 @@ export default function Portfolio() {
               <h3 className="font-[500] text-expresso leading-tight">{p.title}</h3>
               <p className="text-liver-brown text-sm font-[400] mt-0.5">{p.subtitle}</p>
               <p className="text-liver-brown text-sm font-[300] mt-1.5 leading-relaxed line-clamp-2">{p.description}</p>
-              <div className="mt-3">
+              <div className="mt-3 flex justify-center -ml-[46px]">
                 <Button onClick={() => window.open(p.url, "_blank")} text={p.buttonText} />
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Portfolio() {
       </div>
 
       {/* Brands */}
-      <div className="mt-10">
+      <div className="mt-4">
         <h2 className="text-expresso font-[500]">Brands</h2>
         <p className="text-liver-brown font-[300] mt-1 mb-8">
           Brands our team has worked with
@@ -136,7 +136,7 @@ export default function Portfolio() {
         {/* Mobile: two rows, small size */}
         <div className="md:hidden flex flex-col gap-3">
           {[clients, [...clients].reverse()].map((row, rowIdx) => (
-            <div key={rowIdx} className="brands-row relative overflow-hidden h-[90px]">
+            <div key={rowIdx} className="brands-row relative overflow-hidden h-[70px]">
               <div
                 className={`absolute flex top-0 left-0 ${rowIdx === 0 ? "animate-marquee" : "animate-marquee-reverse"}`}
                 style={{ width: "max-content", willChange: "transform", transform: "translateZ(0)" }}
