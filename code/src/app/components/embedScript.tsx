@@ -15,20 +15,39 @@ export default function EmbedScript() {
 
     document.body.appendChild(script);
 
-    const taglineTimer = setTimeout(() => {
+    let closeBtn: HTMLButtonElement | null = null;
+
+    const injectCloseButton = () => {
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       let node;
       while ((node = walker.nextNode())) {
         if (node.textContent?.trim() === 'Talk To Us') {
-          const el = node.parentElement;
-          if (el) el.style.display = 'none';
+          const taglineEl = node.parentElement;
+          if (!taglineEl || taglineEl.querySelector('[data-tagline-close]')) return;
+
+          closeBtn = document.createElement('button');
+          closeBtn.setAttribute('data-tagline-close', 'true');
+          closeBtn.textContent = '×';
+          closeBtn.style.cssText =
+            'margin-left:4px;background:none;border:none;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;opacity:0.7;color:inherit;vertical-align:middle;';
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (taglineEl) taglineEl.style.display = 'none';
+          });
+
+          taglineEl.appendChild(closeBtn);
+          observer.disconnect();
+          return;
         }
       }
-    }, 10000);
+    };
+
+    const observer = new MutationObserver(injectCloseButton);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     // Cleanup function to remove the script when component unmounts
     return () => {
-      clearTimeout(taglineTimer);
+      observer.disconnect();
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
