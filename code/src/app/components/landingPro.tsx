@@ -156,37 +156,46 @@ export default function LandingPro() {
           <div className="flex items-center gap-2">
             {/* Mobile menu toggle */}
             <button
-              aria-label="Menu"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden inline-flex flex-col justify-center gap-[5px] w-10 h-10 rounded-full border border-redwood/20 items-center cursor-pointer"
+              className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-xl bg-almond-silk hover:bg-cream transition-colors cursor-pointer"
             >
-              <span className={`block h-[2px] w-5 bg-expresso transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-              <span className={`block h-[2px] w-5 bg-expresso transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-[2px] w-5 bg-expresso transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+              {/* top bar — rotates to form top of X */}
+              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-0" : "-translate-y-[6px]"}`} />
+              {/* middle bar — fades out */}
+              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-200 ${menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"}`} />
+              {/* bottom bar — rotates to form bottom of X */}
+              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 translate-y-0" : "translate-y-[6px]"}`} />
             </button>
           </div>
         </div>
 
         {/* Mobile dropdown */}
-        <div className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${menuOpen ? "max-h-80" : "max-h-0"}`}>
-          <nav className="flex flex-col px-[4%] pb-4 gap-1 bg-seashell-pink/95 backdrop-blur-xl border-b border-redwood/15">
-            {NAV.map((item) =>
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col mx-4 mb-4 rounded-2xl overflow-hidden bg-white/80 backdrop-blur-xl border border-redwood/10 shadow-[0_8px_30px_-8px_rgba(90,42,39,0.2)]">
+            {NAV.map((item, i) =>
               item.chat ? (
                 <button
                   key={item.label}
                   onClick={() => { setMenuOpen(false); openChat(); }}
-                  className="py-3 text-left text-[16px] font-[400] text-liver-brown hover:text-expresso border-b border-redwood/5 last:border-0 cursor-pointer"
+                  className={`flex items-center justify-between px-5 py-4 text-left text-[16px] font-[400] text-liver-brown active:bg-almond-silk/50 cursor-pointer ${i < NAV.length - 1 ? "border-b border-redwood/8" : ""}`}
                 >
                   {item.label}
+                  <span className="text-redwood text-lg">→</span>
                 </button>
               ) : (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="py-3 text-[16px] font-[400] text-liver-brown hover:text-expresso border-b border-redwood/5 last:border-0"
+                  className={`flex items-center justify-between px-5 py-4 text-[16px] font-[400] text-liver-brown active:bg-almond-silk/50 ${i < NAV.length - 1 ? "border-b border-redwood/8" : ""}`}
                 >
                   {item.label}
+                  <span className="text-redwood/40 text-lg">›</span>
                 </a>
               )
             )}
