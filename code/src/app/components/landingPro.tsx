@@ -76,7 +76,6 @@ const NAV: { label: string; href?: string; chat?: boolean }[] = [
 
 export default function LandingPro() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -125,15 +124,15 @@ export default function LandingPro() {
             </span>
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — pushed hard right, guaranteed no overlap */}
+          <nav className="hidden md:flex items-center gap-10 ml-auto pl-12">
             {NAV.map((item) =>
               item.chat ? (
                 <button
                   key={item.label}
                   onClick={openChat}
-                  className="relative px-4 py-2 text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors cursor-pointer
-                    after:absolute after:left-4 after:right-4 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors cursor-pointer
+                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
@@ -142,49 +141,9 @@ export default function LandingPro() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative px-4 py-2 text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors
-                    after:absolute after:left-4 after:right-4 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors
+                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-                >
-                  {item.label}
-                </a>
-              )
-            )}
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-2">
-            {/* Mobile menu toggle */}
-            <button
-              aria-label="Menu"
-              onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden inline-flex flex-col justify-center gap-[5px] w-10 h-10 rounded-full border border-redwood/20 items-center cursor-pointer"
-            >
-              <span className={`block h-[2px] w-5 bg-expresso transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-              <span className={`block h-[2px] w-5 bg-expresso transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-[2px] w-5 bg-expresso transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile dropdown */}
-        <div className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${menuOpen ? "max-h-80" : "max-h-0"}`}>
-          <nav className="flex flex-col px-[4%] pb-4 gap-1 bg-seashell-pink/95 backdrop-blur-xl border-b border-redwood/15">
-            {NAV.map((item) =>
-              item.chat ? (
-                <button
-                  key={item.label}
-                  onClick={() => { setMenuOpen(false); openChat(); }}
-                  className="py-3 text-left text-[16px] font-[400] text-liver-brown hover:text-expresso border-b border-redwood/5 last:border-0 cursor-pointer"
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="py-3 text-[16px] font-[400] text-liver-brown hover:text-expresso border-b border-redwood/5 last:border-0"
                 >
                   {item.label}
                 </a>
