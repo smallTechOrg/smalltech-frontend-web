@@ -52,7 +52,7 @@ const jsonLd = {
   "url": "https://smalltech.in",
   "logo": "https://smalltech.in/logo.png",
   "description": "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
-  "sameAs": ["https://aiblog.smalltech.in"],
+  "sameAs": ["https://github.com/smallTechOrg"],
 };
 
 export default function RootLayout({
