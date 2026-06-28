@@ -124,8 +124,8 @@ export default function LandingPro() {
             </span>
           </a>
 
-          {/* Desktop nav — right-aligned, generously spaced */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop nav — pushed hard right, guaranteed no overlap */}
+          <nav className="hidden md:flex items-center gap-10 ml-auto pl-12">
             {NAV.map((item) =>
               item.chat ? (
                 <button
