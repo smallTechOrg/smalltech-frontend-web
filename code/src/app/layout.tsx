@@ -10,9 +10,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "SmallTech | Custom Software & AI Solutions for Business",
+  title: "SmallTech | AI Solutions for Enterprises",
   description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
-  keywords: ["software development", "AI integration", "web development", "app development", "cloud architecture", "tech solutions", "SmallTech", "custom software"],
+  keywords: ["AI solutions", "enterprise AI", "agentic AI", "AI integration", "web development", "app development", "cloud architecture", "tech solutions", "SmallTech"],
   robots: "index, follow",
   alternates: {
     canonical: "https://smalltech.in",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "SmallTech | Custom Software & AI Solutions for Business",
+    title: "SmallTech | AI Solutions for Enterprises",
     description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
     url: "https://smalltech.in",
     siteName: "SmallTech",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SmallTech | Custom Software & AI Solutions for Business",
+    title: "SmallTech | AI Solutions for Enterprises",
     description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
     images: ["https://smalltech.in/logo.png"],
   },
