@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ScrollLayout from "../components/scrollLayout";
+import LandingPro from "../components/landingPro";
 
 export const metadata: Metadata = {
   title: "SmallTech | Custom Software & AI Solutions for Business",
@@ -26,5 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function LandingPage() {
-  return <ScrollLayout />;
+  return <LandingPro />;
 }
