@@ -76,7 +76,6 @@ const NAV: { label: string; href?: string; chat?: boolean }[] = [
 
 export default function LandingPro() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -125,15 +124,15 @@ export default function LandingPro() {
             </span>
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — right-aligned, generously spaced */}
+          <nav className="hidden md:flex items-center gap-8">
             {NAV.map((item) =>
               item.chat ? (
                 <button
                   key={item.label}
                   onClick={openChat}
-                  className="relative px-4 py-2 text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors cursor-pointer
-                    after:absolute after:left-4 after:right-4 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors cursor-pointer
+                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
@@ -142,60 +141,11 @@ export default function LandingPro() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative px-4 py-2 text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors
-                    after:absolute after:left-4 after:right-4 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[400] text-liver-brown hover:text-expresso transition-colors
+                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
-                </a>
-              )
-            )}
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-2">
-            {/* Mobile menu toggle */}
-            <button
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-xl bg-almond-silk hover:bg-cream transition-colors cursor-pointer"
-            >
-              {/* top bar — rotates to form top of X */}
-              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-0" : "-translate-y-[6px]"}`} />
-              {/* middle bar — fades out */}
-              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-200 ${menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"}`} />
-              {/* bottom bar — rotates to form bottom of X */}
-              <span className={`absolute w-5 h-0.5 rounded-full bg-expresso transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 translate-y-0" : "translate-y-[6px]"}`} />
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile dropdown */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <nav className="flex flex-col mx-4 mb-4 rounded-2xl overflow-hidden bg-white/80 backdrop-blur-xl border border-redwood/10 shadow-[0_8px_30px_-8px_rgba(90,42,39,0.2)]">
-            {NAV.map((item, i) =>
-              item.chat ? (
-                <button
-                  key={item.label}
-                  onClick={() => { setMenuOpen(false); openChat(); }}
-                  className={`flex items-center justify-between px-5 py-4 text-left text-[16px] font-[400] text-liver-brown active:bg-almond-silk/50 cursor-pointer ${i < NAV.length - 1 ? "border-b border-redwood/8" : ""}`}
-                >
-                  {item.label}
-                  <span className="text-redwood text-lg">→</span>
-                </button>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`flex items-center justify-between px-5 py-4 text-[16px] font-[400] text-liver-brown active:bg-almond-silk/50 ${i < NAV.length - 1 ? "border-b border-redwood/8" : ""}`}
-                >
-                  {item.label}
-                  <span className="text-redwood/40 text-lg">›</span>
                 </a>
               )
             )}
