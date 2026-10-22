@@ -40,12 +40,13 @@ const clients = [
 const mailto = (subject: string) =>
   `mailto:contact@smalltech.in?subject=${encodeURIComponent(subject)}`;
 
-/* Open Zero chat widget if present, else fall back to email */
+/* Open Zero chat widget with a pre-filled visitor message if present, else fall back to email */
 const openChat = () => {
-  const container = document.querySelector("[data-embed-container]") as HTMLElement | null;
-  const launcher = container?.querySelector('button, a, [role="button"]') as HTMLElement | null;
-  if (launcher || container) {
-    (launcher || container)!.click();
+  const widget = document.querySelector(`iframe[src^="${process.env.NEXT_PUBLIC_EMBED_BASE_URL}"]`);
+  if (widget) {
+    window.dispatchEvent(
+      new CustomEvent("open-chat-widget", { detail: { message: "Hey, I want to contact you." } })
+    );
   } else {
     window.open("mailto:contact@smalltech.in");
   }
@@ -490,17 +491,22 @@ export default function LandingPro() {
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-redwood/10 mt-8">
         <div className="max-w-[1200px] mx-auto px-[4%] py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[14px] font-[400] text-deep-mocha">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 -mb-1 md:mb-0">
             <Image src="/logo.png" alt="logo" width={0} height={0} sizes="36px" className="h-7 w-auto object-contain" />
             <span className="font-[600]">smallTech</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="https://github.com/smallTechOrg" target="_blank" rel="noreferrer" className="hover:underline">
-              github
-            </a>
-            <a href="mailto:contact@smalltech.in" className="hover:underline">
-              mail
-            </a>
+          <div className="contents md:flex md:flex-row md:items-center md:gap-6">
+            <div className="flex items-center gap-6">
+              <a href="https://github.com/smallTechOrg" target="_blank" rel="noreferrer" className="hover:underline">
+                github
+              </a>
+              <button onClick={openChat} className="hover:underline cursor-pointer">
+                contact
+              </button>
+              <a href="https://www.linkedin.com/company/madhyamakist" target="_blank" rel="noreferrer" className="hover:underline">
+                linkedin
+              </a>
+            </div>
             <span className="text-expresso">© 2026 madhyamakist pvt ltd</span>
           </div>
         </div>
