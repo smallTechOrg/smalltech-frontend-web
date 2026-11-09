@@ -16,26 +16,43 @@ export const hero = {
   titleLead: "Changing how the world",
   titleAccent: "works.",
   body:
-    "We are a collective of engineers, designers and thinkers who believe that AI can be and should be used for good. " +
-    "We do not only build and scale agentic software " +
-    "but we also aim to do so equitably and sustainably.",
-  pills: ["Applied AI", "AI Consulting", "AI Training"],
+    "We are a collective of engineers, designers and thinkers whose mission is to ensure tech enables " +
+    "the democratisation of power, not the concentration of it. We don't just build and scale agentic " +
+    "software, we aim to do so equitably and sustainably.",
+};
+
+/* ------------------------------------------------------------------- zer0 */
+
+/** Zer0 leads the page (SMA-8). Umbrella site: zer0.smalltech.in. */
+export const zer0 = {
+  url: "https://zer0.smalltech.in",
+  label: "Zer0 by smallTech",
+  title: "Operationalising agentic AI for small businesses",
+  body:
+    "Classical workflows were built for people passing work between inboxes and spreadsheets. " +
+    "Zer0 redesigns them so agents run the repetitive steps end to end and your people make the calls, " +
+    "with an approval gate and an audit trail at every step.",
+  products: [
+    { title: "Sales Agent", blurb: "Finds, researches and qualifies prospects, then hands you the warm conversation.", url: "https://sales0.smalltech.in" },
+    { title: "Inbox Agent", blurb: "Collapses hundreds of threads into a short list of decisions. Never deletes anything.", url: "https://github.com/smallTechOrg/zero-inbox-agent" },
+    { title: "Data Analyst", blurb: "Ask your spreadsheets questions in plain English and get explainable answers.", url: "https://data-analysis-agent-870371939888.us-central1.run.app/app/" },
+    { title: "Vanguard", blurb: "AI-first security audits with approval gates and immutable audit logs.", url: "https://github.com/smallTechOrg/ai-security-agency" },
+  ],
 };
 
 export const stats: { value: string; label: string }[] = [
-  { value: "700+", label: "Professionals trained" },
-  { value: "30+", label: "CXOs, MDs & HODs" },
-  { value: "10+", label: "Enterprise & Gov Orgs" },
-  { value: "5+", label: "AI Agents Deployed" },
+  { value: "30+", label: "CXOs, MDs & HODs through our training programmes" },
+  { value: "10+", label: "Enterprise & government organisations" },
+  { value: "7+", label: "AI agents deployed" },
 ];
 
 /* --------------------------------------------------------------- practices */
 
 export const services: { title: string; blurb: string }[] = [
   {
-    title: "AI Training",
+    title: "Applied AI",
     blurb:
-      "Hands-on upskilling for leadership and engineering teams — GenAI foundations through to multi-agent architectures.",
+      "Forward-deployed engineers who design, ship and run production agents inside your organisation, alongside your people.",
   },
   {
     title: "AI Consulting",
@@ -43,20 +60,20 @@ export const services: { title: string; blurb: string }[] = [
       "Where AI actually pays back: use-case discovery, adoption roadmaps, build-vs-buy, governance and the economics of running it.",
   },
   {
-    title: "Applied AI",
+    title: "Technical Advisory",
     blurb:
-      "Forward-deployed engineers shipping production agents inside your organisation, alongside your people.",
+      "Fractional CTO and senior technical leadership: architecture reviews, build-vs-buy calls, hiring and MVP delivery for startups and scaling teams.",
   },
   {
-    title: "Startup Advisory",
+    title: "AI Training",
     blurb:
-      "Tech incubation and MVP delivery across Civic Tech, FinTech and AI — including mentorship for funded teams.",
+      "Hands-on upskilling for leadership and engineering teams, from GenAI foundations to multi-agent architectures.",
   },
 ];
 
 /** The collective's reason for building — kept from the original site. */
 export const ethos =
-  "We help leaders and tech orgs navigate the tumultous waters of AI adoption.";
+  "Engineers first. We design, ship and operate production agents, and help your teams do the same.";
 
 /* ------------------------------------------------------------- ai training */
 
@@ -228,8 +245,8 @@ export const products: Product[] = [
     tag: "Zer0",
     description:
       "A multi-tenant sales agent that runs cold prospecting through to first positive reply without human intervention — discover, research, qualify, outreach.",
-    cta: "Visit Zer0",
-    url: "https://zero.smalltech.in",
+    cta: "Visit Sales Agent",
+    url: "https://sales0.smalltech.in",
     points: [
       "Finds and researches prospects on its own",
       "Qualifies against your ideal-customer profile",

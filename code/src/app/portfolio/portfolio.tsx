@@ -9,7 +9,7 @@ const products = [
     subtitle: "AI Agents for Small Businesses",
     description: "Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI.",
     buttonText: "Visit Site",
-    url: "https://zero.smalltech.in",
+    url: "https://sales0.smalltech.in",
   },
   {
     image: "/local.png",

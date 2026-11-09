@@ -9,10 +9,8 @@ import {
   services,
   ethos,
   programmes,
-  journey,
-  facilitators,
-  deliveryModel,
   products,
+  zer0,
   type Product,
 } from "../landing/content";
 import EmbedScript from "./embedScript";
@@ -53,6 +51,7 @@ const openChat = () => {
 };
 
 const NAV: { label: string; href?: string; chat?: boolean }[] = [
+  { label: "Zer0", href: "#zer0" },
   { label: "What we do", href: "#services" },
   { label: "Portfolio", href: "#products" },
   { label: "AI Training", href: "#training" },
@@ -144,12 +143,12 @@ export default function LandingPro() {
             <p className="text-[16px] md:text-[17px] font-[400] leading-[1.6] text-muted max-w-xl mb-8">
               {hero.body}
             </p>
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3">
               <a
-                href="#training"
+                href="#zer0"
                 className="rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
               >
-                Explore AI Training
+                Explore Zer0
               </a>
               <a
                 href="#products"
@@ -157,16 +156,6 @@ export default function LandingPro() {
               >
                 See our portfolio
               </a>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {hero.pills.map((p) => (
-                <span
-                  key={p}
-                  className="bg-surface border border-line text-muted text-[13px] font-[500] px-4 py-1.5 rounded-full"
-                >
-                  {p}
-                </span>
-              ))}
             </div>
           </div>
 
@@ -185,9 +174,57 @@ export default function LandingPro() {
           </div>
         </section>
 
+        {/* ===== ZER0 ===== */}
+        <section id="zer0" className="pb-16 scroll-mt-24">
+          <div className="surface-inverse rounded-[16px] p-7 md:p-12">
+            <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 md:gap-12 mb-9">
+              <div>
+                <p className="text-[13px] font-[600] uppercase tracking-[0.18em] text-gold mb-3">
+                  {zer0.label}
+                </p>
+                <h2 className="text-readme text-[30px] md:text-[38px] font-[700] leading-[1.15]">
+                  {zer0.title}
+                </h2>
+              </div>
+              <p className="text-ink-muted text-[16px] font-[400] leading-[1.6] md:self-end">{zer0.body}</p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {zer0.products.map((z) => (
+                <a
+                  key={z.title}
+                  href={z.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
+                >
+                  <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">Zer0</span>
+                  <strong className="text-readme text-[19px] font-[700] mb-2">{z.title}</strong>
+                  <span className="text-ink-muted text-[14px] font-[400] leading-[1.6] mb-4">{z.blurb}</span>
+                  <span className="mt-auto text-readme text-[14px] font-[600]">
+                    Open <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <a
+                href={zer0.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
+              >
+                Visit zer0.smalltech.in
+                <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ===== PROOF + BRANDS ===== */}
         <section className="pb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {stats.map((s) => (
               <div
                 key={s.label}
@@ -202,7 +239,7 @@ export default function LandingPro() {
           </div>
 
           <div className="mt-10">
-            <h2 className="text-ink text-[20px] font-[600]">Brands</h2>
+            <h2 className="text-ink text-[20px] font-[600]">Customers</h2>
             <p className="text-muted font-[400] mt-1 mb-6">
               Organisations we have worked with
             </p>
@@ -259,7 +296,7 @@ export default function LandingPro() {
         <section id="services" className="py-16">
           <SectionHead
             eyebrow="What we do"
-            title="Operationalising Agentic AI for you"
+            title="We build and run agentic software"
             sub={ethos}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -293,161 +330,40 @@ export default function LandingPro() {
           </div>
         </section>
 
-        {/* ===== AI TRAINING ===== */}
-        <section id="training" className="py-16">
-          <div className="surface-inverse rounded-[16px] p-7 md:p-12">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
-              <div>
-                <span className="inline-block bg-gold text-ink text-[12px] font-[700] tracking-wide px-3 py-1 rounded-full mb-3">
-                  AI Training
-                </span>
-                <h2 className="text-readme text-[30px] md:text-[38px] font-[700] leading-tight">
-                  Agentic AI is the new delegation
-                </h2>
+        {/* ===== AI TRAINING (secondary since SMA-8) ===== */}
+        <section id="training" className="py-16 scroll-mt-24">
+          <SectionHead
+            eyebrow="AI Training"
+            title="Agentic AI is the new delegation"
+            sub="Practitioner-led programmes for leadership and engineering teams. Every engagement starts with a one-day taster where the room builds a working agent."
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {programmes.map((p) => (
+              <div key={p.title} className="rounded-[16px] bg-surface border border-line p-6 flex flex-col">
+                <span className="text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">{p.kicker}</span>
+                <h3 className="text-ink text-[18px] font-[700] leading-tight mb-1">{p.title}</h3>
+                <p className="text-muted text-[13px] font-[600] mb-3">{p.format}</p>
+                <p className="text-muted text-[14px] font-[400] leading-[1.6]">{p.blurb}</p>
+                <Reveal label="What you get" tone="light" className="mt-auto pt-4">
+                  <ul className="space-y-1.5 pb-1">
+                    {p.outcomes.map((o) => (
+                      <li key={o} className="text-muted text-[13px] font-[400] flex gap-2">
+                        <span className="text-ink font-[700]">›</span>
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
               </div>
-              <p className="text-ink-muted font-[400] md:max-w-sm">
-                Your leaders already run multi-agent systems — they are called teams. You brief them,
-                set the gates, verify the outcomes. We extend that craft to software.
-              </p>
-            </div>
-
-            {/* Programmes — headline only; detail on request.
-                3 columns so the flagship spans a row and the other three fill the next. */}
-            <div className="grid md:grid-cols-3 gap-4">
-              {programmes.map((p) => (
-                <div
-                  key={p.title}
-                  className={`rounded-[20px] p-6 flex flex-col ${
-                    p.flagship
-                      ? "bg-readme md:col-span-3"
-                      : "surface-inset-interactive"
-                  }`}
-                >
-                  <span
-                    className={`text-[11px] font-[700] tracking-[1.5px] uppercase mb-2 ${
-                      p.flagship ? "text-muted" : "text-gold"
-                    }`}
-                  >
-                    {p.kicker}
-                  </span>
-                  <h3
-                    className={`text-[21px] font-[700] mb-1 ${
-                      p.flagship ? "text-ink" : "text-readme"
-                    }`}
-                  >
-                    {p.title}
-                  </h3>
-                  <p
-                    className={`text-[13px] font-[600] mb-3 ${
-                      p.flagship ? "text-muted" : "text-gold"
-                    }`}
-                  >
-                    {p.format}
-                  </p>
-                  <p
-                    className={`text-[14px] font-[400] ${
-                      p.flagship ? "text-muted" : "text-ink-muted"
-                    }`}
-                  >
-                    {p.blurb}
-                  </p>
-
-                  <Reveal
-                    label="What you get"
-                    tone={p.flagship ? "light" : "dark"}
-                    className="mt-auto pt-4"
-                  >
-                    <ul
-                      className={`space-y-1.5 pb-1 ${
-                        p.flagship ? "sm:grid sm:grid-cols-2 sm:gap-x-6 sm:space-y-0" : ""
-                      }`}
-                    >
-                      {p.outcomes.map((o) => (
-                        <li
-                          key={o}
-                          className={`text-[13px] font-[400] flex gap-2 ${
-                            p.flagship ? "text-muted sm:py-0.5" : "text-ink-muted"
-                          }`}
-                        >
-                          <span className={`${p.flagship ? "text-ink" : "text-gold"} font-[700]`}>›</span>
-                          {o}
-                        </li>
-                      ))}
-                    </ul>
-                  </Reveal>
-                </div>
-              ))}
-            </div>
-
-            {/* Everything else, folded away */}
-            <div className="mt-4 grid md:grid-cols-3 gap-4">
-              <Panel title="The 12-week journey" hint="What ships, week by week">
-                <div className="grid grid-cols-2 gap-2.5 pt-4">
-                  {journey.map((j) => (
-                    <div key={j.when} className="rounded-[12px] surface-inset-quiet p-3">
-                      <span className="block text-gold text-[10px] font-[700] tracking-[1.5px] uppercase mb-1">
-                        {j.when}
-                      </span>
-                      <strong className="block text-readme text-[13px] font-[700] leading-snug">
-                        {j.title}
-                      </strong>
-                      <span className="text-ink-muted text-[11px] font-[400]">{j.ships}</span>
-                    </div>
-                  ))}
-                </div>
-              </Panel>
-
-              <Panel title="Between the Fridays" hint="How the cohort stays on track">
-                <div className="flex flex-col gap-2.5 pt-4">
-                  {deliveryModel.map((d) => (
-                    <div key={d.title} className="rounded-[12px] surface-inset-quiet p-3.5">
-                      <strong className="block text-readme text-[13px] font-[700] mb-1">
-                        {d.title}
-                      </strong>
-                      <span className="text-ink-muted text-[12px] font-[400]">{d.blurb}</span>
-                    </div>
-                  ))}
-                </div>
-              </Panel>
-
-              <Panel title="Senior practitioners only" hint="Who actually runs the room">
-                <div className="flex flex-col gap-2.5 pt-4">
-                  <p className="text-ink-muted text-[12px] font-[400]">{facilitators.summary}</p>
-                  {facilitators.people.map((p) => (
-                    <div key={p.name} className="rounded-[12px] surface-inset-quiet p-3.5 flex gap-3">
-                      <span className="shrink-0 grid place-items-center w-9 h-9 rounded-full bg-gold text-ink text-[13px] font-[700]">
-                        {p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                      </span>
-                      <div>
-                        <strong className="block text-readme text-[13px] font-[700] leading-tight">
-                          {p.name}
-                        </strong>
-                        <span className="block text-gold text-[10px] font-[700] tracking-[1.2px] uppercase mt-0.5 mb-1">
-                          {p.role}
-                        </span>
-                        <span className="text-ink-muted text-[11px] font-[400]">{p.bio}</span>
-                      </div>
-                    </div>
-                  ))}
-                  <p className="text-ink-muted text-[11px] font-[400] mt-1">
-                    Shipped and built at — {facilitators.employers.join(" · ")}
-                  </p>
-                </div>
-              </Panel>
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <a
-                href={mailto("AI Training enquiry")}
-                className="shrink-0 whitespace-nowrap rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
-              >
-                Talk to us about a cohort
-              </a>
-              <p className="text-ink-muted text-[13px] font-[400]">
-                Every engagement starts with a one-day taster for your leadership — the room builds a
-                working agent before you commit to anything.
-              </p>
-            </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <a
+              href={mailto("AI Training enquiry")}
+              className="inline-block rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
+            >
+              Talk to us about a cohort
+            </a>
           </div>
         </section>
 
@@ -534,44 +450,6 @@ function Reveal({
       >
         {label}
         <span className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}>⌄</span>
-      </button>
-      <div
-        id={id}
-        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">{children}</div>
-      </div>
-    </div>
-  );
-}
-
-/** A foldable panel on the dark training card. Collapsed by default. */
-function Panel({ title, hint, children }: { title: string; hint: string; children: ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const id = useId();
-
-  return (
-    <div className="rounded-[20px] surface-inset p-5 md:p-6 self-start w-full">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls={id}
-        className="w-full text-left cursor-pointer group"
-      >
-        <span className="flex items-start justify-between gap-3">
-          <span className="text-readme text-[16px] font-[600] leading-snug">{title}</span>
-          <span
-            className={`shrink-0 grid place-items-center w-6 h-6 rounded-full border border-ink-line text-ink-muted text-[12px] transition-transform duration-300 ${
-              open ? "rotate-45" : ""
-            }`}
-            aria-hidden
-          >
-            +
-          </span>
-        </span>
-        <span className="block text-ink-muted text-[12px] font-[400] mt-1.5">{hint}</span>
       </button>
       <div
         id={id}
