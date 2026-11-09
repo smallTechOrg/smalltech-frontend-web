@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "smallTech | Home of Zer0, Agentic AI for Small Businesses",
+  title: "smallTech, Agentic AI for Small Businesses",
   description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
   keywords: ["Zer0", "agentic AI for small business", "AI agents for small business", "AI workflow automation", "AI training", "agentic AI training", "corporate AI training India", "AI training for executives", "multi-agent systems", "Claude Code training", "enterprise AI transformation", "AI adoption roadmap", "smallTech"],
   robots: "index, follow",
@@ -18,11 +18,16 @@ export const metadata: Metadata = {
     canonical: "https://smalltech.in",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+    ],
     shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "smallTech | Home of Zer0, Agentic AI for Small Businesses",
+    title: "smallTech, Agentic AI for Small Businesses",
     description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
     url: "https://smalltech.in",
     siteName: "SmallTech",
@@ -39,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "smallTech | Home of Zer0, Agentic AI for Small Businesses",
+    title: "smallTech, Agentic AI for Small Businesses",
     description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
     images: ["https://smalltech.in/logo.png"],
   },
