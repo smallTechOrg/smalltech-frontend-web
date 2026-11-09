@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useId, type ReactNode } from "react";
 import Image from "next/image";
-import { techItems } from "../offerings/icons";
 import {
   hero,
   stats,
@@ -11,12 +10,11 @@ import {
   programmes,
   products,
   zer0,
+  aiStack,
   type Product,
 } from "../landing/content";
 import EmbedScript from "./embedScript";
 
-/* normalise "./foo.png" | "foo.png" -> "/foo.png" */
-const asset = (s: string) => "/" + s.replace(/^\.?\//, "");
 
 const clients = [
   { name: "UP Police", logo: "/up police.png", url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", w: 90, h: 90 },
@@ -242,27 +240,26 @@ export default function LandingPro() {
           </div>
         </section>
 
-        {/* ===== PROOF + BRANDS ===== */}
-        <section className="pb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-[16px] bg-surface border border-line px-5 py-6 text-center flex flex-col justify-center"
-              >
-                <p className="text-ink text-[28px] md:text-[34px] font-[700] leading-none">
-                  {s.value}
-                </p>
-                <p className="text-muted text-[13px] font-[400] mt-2">{s.label}</p>
+        {/* ===== CUSTOMERS (with proof numbers) ===== */}
+        <section id="customers" className="pb-16">
+          <div className="border-t border-line pt-10">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-8">
+              <div>
+                <p className="label mb-2">Customers</p>
+                <h2 className="text-ink text-[24px] md:text-[28px] font-[700] leading-[1.2]">
+                  Organisations we have worked with
+                </h2>
               </div>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <h2 className="text-ink text-[20px] font-[600]">Customers</h2>
-            <p className="text-muted font-[400] mt-1 mb-6">
-              Organisations we have worked with
-            </p>
+              <dl className="grid grid-cols-3 gap-4 sm:gap-8 lg:max-w-[620px]">
+                {stats.map((s, idx) => (
+                  <div key={s.label} className={idx > 0 ? "border-l border-line pl-4 sm:pl-8" : ""}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd className="text-ink text-[28px] md:text-[34px] font-[700] leading-none">{s.value}</dd>
+                    <dd className="text-muted text-[12px] md:text-[13px] font-[400] leading-[1.4] mt-2">{s.label}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
             <div className="flex flex-col gap-3">
               {[clients, [...clients].reverse()].map((row, rowIdx) => (
                 <div key={rowIdx} className="brands-row relative overflow-hidden h-[90px] md:h-[110px]">
@@ -354,7 +351,7 @@ export default function LandingPro() {
         <section id="training" className="py-16 scroll-mt-24">
           <SectionHead
             eyebrow="AI Training"
-            title="Agentic AI is the new delegation"
+            title="AI Training for Leaders & Tech Teams"
             sub="Practitioner-led programmes for leadership and engineering teams. Every engagement starts with a one-day taster where the room builds a working agent."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -377,38 +374,53 @@ export default function LandingPro() {
               </div>
             ))}
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a
               href={mailto("AI Training enquiry")}
               className="inline-block rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
             >
               Talk to us about a cohort
             </a>
+            <a
+              href="https://blog0.smalltech.in"
+              target="_blank"
+              rel="noreferrer"
+              className="text-ink text-[15px] font-[600] underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink"
+            >
+              Read what we are learning on blog0 →
+            </a>
           </div>
         </section>
 
-        {/* ===== TECHNOLOGIES ===== */}
+        {/* ===== TECH STACK (AI only) ===== */}
         <section id="tech" className="py-16">
           <SectionHead
-            eyebrow="Stack"
-            title="Technologies we support"
-            sub="Integrate AI across your existing tech stack."
+            eyebrow="Tech Stack"
+            title="The AI we build with"
+            sub="Model-agnostic by design: we pick the right model for each job and keep you free to switch."
           />
-          <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-9 gap-3">
-            {techItems.map((icon) => (
-              <div
-                key={icon.src}
-                className="aspect-square rounded-[16px] bg-surface border border-line grid place-items-center hover:border-ink-line transition-colors"
-              >
-                <Image
-                  src={asset(icon.src)}
-                  alt={icon.alt}
-                  width={42}
-                  height={42}
-                  className="object-contain opacity-80"
-                />
+          <div className="grid md:grid-cols-[1fr_2fr] gap-4">
+            <div className="rounded-[16px] bg-ink p-6 flex flex-col justify-between">
+              <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">Partner</span>
+              <div>
+                <strong className="block text-readme text-[24px] font-[700] leading-tight mb-2">Anthropic partner</strong>
+                <span className="text-ink-muted text-[14px] font-[400] leading-[1.6]">
+                  We build on Claude and Claude Code every day, and teach teams to do the same.
+                </span>
               </div>
-            ))}
+            </div>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {aiStack.map((g) => (
+                <div key={g.group} className="rounded-[16px] bg-surface border border-line p-6">
+                  <span className="block text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">{g.group}</span>
+                  <ul className="space-y-2">
+                    {g.items.map((it) => (
+                      <li key={it} className="text-ink text-[15px] font-[600]">{it}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>

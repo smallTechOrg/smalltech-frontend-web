@@ -327,3 +327,12 @@ export const products: Product[] = [
 ];
 
 
+
+/* ------------------------------------------------------------ tech stack */
+
+/** AI-only stack. Third-party names are shown as text, not logos. */
+export const aiStack: { group: string; items: string[] }[] = [
+  { group: "Frontier models", items: ["Anthropic Claude", "OpenAI GPT", "Google Gemini"] },
+  { group: "Agent frameworks", items: ["LangChain", "LangGraph", "LiteLLM", "Claude Code"] },
+  { group: "Inference & platforms", items: ["Groq", "OpenRouter", "Google Vertex AI"] },
+];
