@@ -6,94 +6,57 @@
 @import './domains//domains.css';
 @import './landing/landing.css';
 
-@theme inline {
-  --color-cream: #c4bbaf;
-  --color-cinereous: #A5978B;
-  --color-brown: #5c4742;
-  --color-liver: #5C4742;
-  --color-redwood: #8D5B4C;
-  --color-caput: #5A2A27;
-  --color-licorice: #1D0E0C;
-  --color-khaki:#A5978B;
-  --color-rose:#B8887A;
-  --color-almond-silk: #E7C9C6;
-  --color-seashell-pink: #F2E3E1;
-  --color-bg-gradient:linear-gradient(to bottom, var(--color-almond-silk), var(--color-seashell-pink));
-  --color-deep-mocha:#473733;
-  --color-liver-brown:#5C4742;
-  --color-mauve-bark:#6A534D;
-  --color-expresso: #5A2A27;
-  /* Accent for use ON the dark inverse surfaces. Plain --color-rose is only
-     2.31:1 on the old mid-brown and 5.47:1 on the new espresso; this brighter
-     tone clears AA on both the panel and its inner cards. */
-  --color-ember: #DFA595;
-}
-
-/* ============================================================ inverse surface
-   The dark panels that break up the page (AI Training, flagship product tile).
-
-   Previously these were a mid-brown (#6A534D) sitting only 5.7:1 from the page
-   background — it read as a slightly darker patch rather than a deliberate
-   panel, and it starved every accent colour, forcing everything inside it into
-   a single pale tone. Deep espresso sits ~13:1 from the page, so the panel
-   reads as intentional and the warm accents become usable again.
+/* ================================================================ brand tokens
+   Source: smallTech Brand Guidelines v1.2 (Figma), colour variables.
+   Readme ~60% · Terminal Ink ~25% · Gold Master ~12% · status accents <5%.
+   Rules: Gold Master is a fill on light grounds, never small text (display-size
+   only). Gold text is fine on Terminal Ink. Primary buttons are Gold Master with
+   Terminal Ink text everywhere; secondary buttons are an ink outline. Accents are for status and charts only.
+   No gradients, outlines or effects — except the hero accent word (approved).
    ============================================================================ */
+@theme inline {
+  /* Brand colours */
+  --color-gold: #D68A2E;          /* Gold Master — buttons, key shapes */
+  --color-gold-60: #B2823B;       /* Gold Master scale 60 — hover/pressed */
+  --color-gold-70: #83602E;       /* Gold Master scale 70 — gradient start */
+  --color-ink: #1C1B18;           /* Terminal Ink — text, dark grounds */
+  --color-readme: #F5F1EE;        /* Readme — default background */
 
-.surface-inverse {
-  position: relative;
-  isolation: isolate;
-  background:
-    radial-gradient(115% 85% at 8% 0%, rgba(223, 165, 149, 0.20) 0%, transparent 58%),
-    linear-gradient(158deg, #3B2723 0%, #2A1917 52%, #1E1210 100%);
+  /* Light tokens */
+  --color-surface: #FBFBF9;       /* cards on Readme */
+  --color-muted: #4F4D4A;         /* secondary text */
+  --color-line: #C4C3C0;          /* borders, rules */
+
+  /* Dark tokens (on Terminal Ink) */
+  --color-ink-surface: #4F4D4A;
+  --color-ink-muted: #939290;
+  --color-ink-line: #7B7977;
+
+  /* Status / chart accents — keep under 5% of any layout */
+  --color-merged: #708D55;        /* positive */
+  --color-reverted: #C54C3C;      /* negative */
+  --color-pending: #2A6FB0;       /* neutral */
 }
 
-/* Warmer, brighter bloom — used on the flagship product tile so the two dark
-   moments read as one family without being identical. */
+/* Dark panel (AI Training, flagship product). Flat Terminal Ink per the guide. */
+.surface-inverse,
 .surface-inverse-accent {
-  position: relative;
-  isolation: isolate;
-  background:
-    radial-gradient(100% 70% at 92% 100%, rgba(223, 165, 149, 0.26) 0%, transparent 60%),
-    radial-gradient(90% 60% at 0% 0%, rgba(141, 91, 76, 0.35) 0%, transparent 55%),
-    linear-gradient(158deg, #3E2A25 0%, #2B1A18 55%, #1E1210 100%);
+  background: var(--color-ink);
 }
 
-/* Rim light: a hairline highlight along the top edge plus a faint warm outline,
-   so the panel has an edge instead of bleeding into the page. */
-.surface-inverse::after,
-.surface-inverse-accent::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    inset 0 1px 0 rgba(242, 227, 225, 0.14),
-    inset 0 0 0 1px rgba(231, 201, 198, 0.09);
-}
-
-/* Cards sitting on an inverse surface. white/6 separated by only 1.16:1 — all
-   but invisible; this pairs a stronger fill with a warm hairline so the inner
-   surfaces actually read as distinct. */
-.surface-inset {
-  background: rgba(255, 255, 255, 0.085);
-  border: 1px solid rgba(231, 201, 198, 0.16);
-}
-
+/* Cards on a dark panel: a hairline in the dark border token, no fill tricks. */
+.surface-inset,
 .surface-inset-quiet {
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(231, 201, 198, 0.12);
+  border: 1px solid var(--color-ink-line);
 }
 
 .surface-inset-interactive {
-  background: rgba(255, 255, 255, 0.085);
-  border: 1px solid rgba(231, 201, 198, 0.16);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  border: 1px solid var(--color-ink-line);
+  transition: border-color 0.25s ease;
 }
 
 .surface-inset-interactive:hover {
-  background: rgba(255, 255, 255, 0.125);
-  border-color: rgba(231, 201, 198, 0.28);
+  border-color: var(--color-ink-muted);
 }
 
 body {

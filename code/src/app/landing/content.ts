@@ -16,26 +16,70 @@ export const hero = {
   titleLead: "Changing how the world",
   titleAccent: "works.",
   body:
-    "We are a collective of engineers, designers and thinkers who believe that AI can be and should be used for good. " +
-    "We do not only build and scale agentic software " +
-    "but we also aim to do so equitably and sustainably.",
-  pills: ["Applied AI", "AI Consulting", "AI Training"],
+    "We are a collective of engineers, designers and thinkers whose mission is to ensure tech enables " +
+    "the democratisation of power, not the concentration of it. We don't just build and scale agentic " +
+    "software, we aim to do so equitably and sustainably.",
 };
 
+/* ------------------------------------------------------------------- zer0 */
+
+/** Zer0 leads the page (SMA-8). Umbrella site: zer0.smalltech.in. */
+export const zer0: {
+  url: string;
+  label: string;
+  title: string;
+  body: string;
+  products: { title: string; blurb: string; url?: string; cta?: string }[];
+} = {
+  url: "https://zer0.smalltech.in",
+  label: "Zer0 by smallTech",
+  title: "Operationalising agentic AI for small businesses",
+  body:
+    "Zer0 is a multi-agent operating system for small businesses. Classical workflows were built for people " +
+    "passing work between inboxes and spreadsheets; Zer0 agents run the repetitive steps end to end and your " +
+    "people make the calls, with an approval gate and an audit trail at every step.",
+  products: [
+    {
+      title: "sales0",
+      blurb: "The AI-native CRM: finds buyer enquiries, keeps the pipeline, drafts outreach for your approval and follows up.",
+      url: "https://sales0.smalltech.in",
+    },
+    {
+      title: "chatbot0",
+      blurb: "An AI chat agent on your website: answers visitors, captures leads and hands you the warm conversation.",
+      url: "https://chatbot0.smalltech.in",
+    },
+    {
+      title: "data0",
+      blurb: "Upload a spreadsheet and ask questions in plain English. Explainable answers with inline charts.",
+    },
+    {
+      title: "cloud0",
+      blurb: "Keeps cloud spend and errors in check: GCP billing reports, alerts and error tracking.",
+      url: "https://github.com/smallTechOrg/cloud0",
+    },
+    {
+      title: "zero-shot-harness",
+      blurb: "Our Claude Code skills: give it a one-line idea and get a working, tested, phased project, spec-first.",
+      url: "https://github.com/smallTechOrg/zero-shot-harness",
+    },
+  ],
+};
+
+
 export const stats: { value: string; label: string }[] = [
-  { value: "700+", label: "Professionals trained" },
-  { value: "30+", label: "CXOs, MDs & HODs" },
-  { value: "10+", label: "Enterprise & Gov Orgs" },
-  { value: "5+", label: "AI Agents Deployed" },
+  { value: "30+", label: "CXOs, MDs & HODs through our training programmes" },
+  { value: "10+", label: "Enterprise & government organisations" },
+  { value: "7+", label: "AI agents deployed" },
 ];
 
 /* --------------------------------------------------------------- practices */
 
 export const services: { title: string; blurb: string }[] = [
   {
-    title: "AI Training",
+    title: "Applied AI",
     blurb:
-      "Hands-on upskilling for leadership and engineering teams — GenAI foundations through to multi-agent architectures.",
+      "Forward-deployed engineers who design, ship and run production agents inside your organisation, alongside your people.",
   },
   {
     title: "AI Consulting",
@@ -43,20 +87,20 @@ export const services: { title: string; blurb: string }[] = [
       "Where AI actually pays back: use-case discovery, adoption roadmaps, build-vs-buy, governance and the economics of running it.",
   },
   {
-    title: "Applied AI",
+    title: "Technical Advisory",
     blurb:
-      "Forward-deployed engineers shipping production agents inside your organisation, alongside your people.",
+      "Fractional CTO and senior technical leadership: architecture reviews, build-vs-buy calls, hiring and MVP delivery for startups and scaling teams.",
   },
   {
-    title: "Startup Advisory",
+    title: "AI Training",
     blurb:
-      "Tech incubation and MVP delivery across Civic Tech, FinTech and AI — including mentorship for funded teams.",
+      "Hands-on upskilling for leadership and engineering teams, from GenAI foundations to multi-agent architectures.",
   },
 ];
 
 /** The collective's reason for building — kept from the original site. */
 export const ethos =
-  "We help leaders and tech orgs navigate the tumultous waters of AI adoption.";
+  "Engineers first. We design, ship and operate production agents, and help your teams do the same.";
 
 /* ------------------------------------------------------------- ai training */
 
@@ -223,92 +267,30 @@ export interface Product {
 export const products: Product[] = [
   {
     image: "/robot.svg",
-    title: "Zer0 Sales Agent",
-    role: "Autonomous top-of-funnel",
-    tag: "Zer0",
+    title: "Zer0",
+    role: "A multi-agent operating system for small businesses",
+    tag: "Zer0 suite",
     description:
-      "A multi-tenant sales agent that runs cold prospecting through to first positive reply without human intervention — discover, research, qualify, outreach.",
+      "Agents that run a small business's everyday workflows end to end, with a human approval gate wherever it matters and an audit trail for every step.",
     cta: "Visit Zer0",
-    url: "https://zero.smalltech.in",
+    url: "https://zer0.smalltech.in",
     points: [
-      "Finds and researches prospects on its own",
-      "Qualifies against your ideal-customer profile",
-      "Writes and sends outreach, then follows up",
-      "Hands you the conversation once it turns warm",
+      "sales0: the AI-native CRM, from enquiry to follow-up",
+      "chatbot0: an AI chat agent for your website",
+      "data0: your data, asked in plain English",
+      "cloud0: cloud spend and errors in check",
     ],
     flagship: true,
   },
   {
-    image: "/draw.png",
-    title: "zero-shot-harness",
-    role: "Installable skills for Claude & Hermes",
-    tag: "Open Source",
-    description:
-      "Three agent skills — build, fix and sync — installed straight into Claude Code or Hermes. Give it a one-line idea and walk away with a working, tested, phased project, spec-first with a human gate at every phase.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/zero-shot-harness",
-  },
-  {
     image: "/local.png",
     title: "#local",
-    role: "Location-based community platform",
+    role: "Civic issues, solved together",
     tag: "Civic Tech",
     description:
-      "The fastest way to report potholes, illegal dumping, broken lights and other civic issues directly to your local government.",
-    cta: "Download",
+      "A location-based platform where neighbours report potholes, illegal dumping, broken lights and other civic issues, and work together to get them resolved. Our longest-running product, built and run by us.",
+    cta: "Visit #local",
     url: "https://local.smalltech.in",
-  },
-  {
-    image: "/workshop.svg",
-    title: "Workshop Helmsman",
-    role: "Live cohort tracking",
-    tag: "Open Source",
-    description:
-      "The self-hosted milestone tracker behind our own workshops — participants join with a name, facilitators watch the whole room live.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/workshop-helmsman",
-  },
-  {
-    image: "/ai.png",
-    title: "Zer0 Data Analyst",
-    role: "Your data, asked in English",
-    tag: "Zer0 · Live demo",
-    description:
-      "Upload a spreadsheet and ask questions in plain English. A reasoning loop over pandas returns explainable answers with inline charts.",
-    cta: "Try the live demo",
-    url: "https://data-analysis-agent-870371939888.us-central1.run.app/app/",
-    altCta: "Source",
-    altUrl: "https://github.com/smallTechOrg/data-analysis-agent",
-  },
-  {
-    image: "/email.png",
-    title: "Zer0 Inbox Agent",
-    role: "Inbox triage you can audit",
-    tag: "Zer0",
-    description:
-      "Categorises every thread, collapses hundreds of them into ~30 decisions, and shows exactly why each call was made. Never deletes anything.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/zero-inbox-agent",
-  },
-  {
-    image: "/security.png",
-    title: "Vanguard by Zer0",
-    role: "AI-first security audits",
-    tag: "Zer0",
-    description:
-      "Authorised website and application auditing with approval gates, evidence capture, immutable audit logs and professional reports.",
-    cta: "Learn more",
-    url: "https://github.com/smallTechOrg/ai-security-agency",
-  },
-  {
-    image: "/python.png",
-    title: "zero-shot boilerplate",
-    role: "Agent starting point",
-    tag: "Open Source",
-    description:
-      "A spec-first baseline agent — FastAPI, LangGraph, provider-agnostic LLM — with spec templates and the sub-agent team already wired in.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/zero-shot-claude-boilerplate",
   },
   {
     image: "/marketplace.png",
@@ -316,8 +298,58 @@ export const products: Product[] = [
     role: "MVP build & tech mentorship",
     tag: "FinTech",
     description:
-      "AI-powered scores for every listed stock across four dimensions and three timeframes. We build the MVP and mentor the team. MeitY-funded.",
+      "AI-powered scores for every listed stock across four dimensions and three timeframes. We built the MVP and mentor the team. MeitY-funded.",
     cta: "Visit site",
     url: "https://finwerse.com",
+  },
+  {
+    image: "/app.svg",
+    title: "GLITCH",
+    role: "AI literacy, as a game",
+    tag: "AI Literacy",
+    description:
+      "A game for 13 to 18 year olds that teaches them to spot what AI gets wrong and make the call. Plays in the browser, no sign-up.",
+    cta: "Play GLITCH",
+    url: "https://smalltechorg.github.io/GLITCH/",
+    altCta: "Source",
+    altUrl: "https://github.com/smallTechOrg/GLITCH",
+  },
+  {
+    image: "/draw.png",
+    title: "zero-shot-harness",
+    role: "Installable skills for Claude & Hermes",
+    tag: "Open Source",
+    description:
+      "Three agent skills (build, fix and sync) for Claude Code or Hermes. Give it a one-line idea and get a working, tested, phased project, spec-first with a human gate at every phase.",
+    cta: "View on GitHub",
+    url: "https://github.com/smallTechOrg/zero-shot-harness",
+  },
+];
+
+
+
+/* ------------------------------------------------------------ tech stack */
+
+/** AI-only stack. Third-party names are shown as text, not logos. */
+export const aiStack: { group: string; items: string[] }[] = [
+  {
+    group: "Frontier models",
+    items: ["Anthropic Claude", "OpenAI GPT", "Google Gemini", "Meta Llama", "Mistral", "DeepSeek", "Qwen"],
+  },
+  {
+    group: "Agent frameworks",
+    items: ["LangChain", "LangGraph", "LiteLLM", "Claude Agent SDK", "OpenAI Agents SDK", "CrewAI", "Pydantic AI"],
+  },
+  {
+    group: "Agent tooling",
+    items: ["Claude Code", "Model Context Protocol", "Playwright", "Browser Use", "E2B sandboxes"],
+  },
+  {
+    group: "Inference & platforms",
+    items: ["Google Vertex AI", "Amazon Bedrock", "Azure AI Foundry", "Groq", "OpenRouter", "Ollama", "vLLM", "Hugging Face"],
+  },
+  {
+    group: "Retrieval, evals & observability",
+    items: ["pgvector", "Qdrant", "LlamaIndex", "LangSmith", "Langfuse", "Ragas"],
   },
 ];

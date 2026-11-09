@@ -10,20 +10,25 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "smallTech | Applied AI Consulting & Training",
-  description: "smallTech is an AI-native studio: practitioner-led agentic AI training for enterprise and government leadership, and the Zer0 agent suite for small businesses. 700+ professionals trained.",
-  keywords: ["AI training", "agentic AI training", "corporate AI training India", "AI training for executives", "multi-agent systems", "AI agents for small business", "Claude Code training", "enterprise AI transformation", "AI adoption roadmap", "Zer0", "smallTech"],
+  title: "smallTech, Agentic AI for Small Businesses",
+  description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
+  keywords: ["Zer0", "agentic AI for small business", "AI agents for small business", "AI workflow automation", "AI training", "agentic AI training", "corporate AI training India", "AI training for executives", "multi-agent systems", "Claude Code training", "enterprise AI transformation", "AI adoption roadmap", "smallTech"],
   robots: "index, follow",
   alternates: {
     canonical: "https://smalltech.in",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+    ],
     shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "smallTech | Applied AI Consulting & Training",
-    description: "smallTech is an AI-native studio: practitioner-led agentic AI training for enterprise and government leadership, and the Zer0 agent suite for small businesses. 700+ professionals trained.",
+    title: "smallTech, Agentic AI for Small Businesses",
+    description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
     url: "https://smalltech.in",
     siteName: "SmallTech",
     images: [
@@ -39,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "smallTech | Applied AI Consulting & Training",
-    description: "smallTech is an AI-native studio: practitioner-led agentic AI training for enterprise and government leadership, and the Zer0 agent suite for small businesses. 700+ professionals trained.",
+    title: "smallTech, Agentic AI for Small Businesses",
+    description: "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
     images: ["https://smalltech.in/logo.png"],
   },
 };
@@ -51,7 +56,7 @@ const jsonLd = {
   "name": "SmallTech",
   "url": "https://smalltech.in",
   "logo": "https://smalltech.in/logo.png",
-  "description": "smallTech is an AI-native studio: practitioner-led agentic AI training for enterprise and government leadership, and the Zer0 agent suite for small businesses. 700+ professionals trained.",
+  "description": "smallTech builds Zer0: agents that operationalise agentic AI for small businesses, with human approval at every step. Plus applied AI, consulting and practitioner-led AI training. 700+ professionals trained.",
   "sameAs": ["https://github.com/smallTechOrg"],
 };
 

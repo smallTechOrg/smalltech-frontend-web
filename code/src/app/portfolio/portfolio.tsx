@@ -9,7 +9,7 @@ const products = [
     subtitle: "AI Agents for Small Businesses",
     description: "Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI.",
     buttonText: "Visit Site",
-    url: "https://zero.smalltech.in",
+    url: "https://sales0.smalltech.in",
   },
   {
     image: "/local.png",
@@ -57,7 +57,7 @@ function ClientLogo({ client, small = false }: { client: Client; small?: boolean
         loading="eager"
       />
       {client.showName && (
-        <span className="text-xs font-[600] tracking-wide text-expresso whitespace-nowrap">
+        <span className="text-xs font-[600] tracking-wide text-ink whitespace-nowrap">
           {client.name}
         </span>
       )}
@@ -97,8 +97,7 @@ export default function Portfolio() {
             className="
               flex flex-row items-center gap-5
               rounded-[24px]
-              bg-[linear-gradient(to_bottom,#F2E3E1_0%,#DBC2BD_100%)]
-              shadow-[0_3px_20px_0_rgba(0,0,0,0.4)]
+              bg-surface border border-line
               p-5
             "
           >
@@ -110,9 +109,9 @@ export default function Portfolio() {
               className="object-contain opacity-70 shrink-0"
             />
             <div className="flex flex-col flex-1 min-w-0">
-              <h3 className="font-[500] text-expresso leading-tight">{p.title}</h3>
-              <p className="text-liver-brown text-sm font-[400] mt-0.5">{p.subtitle}</p>
-              <p className="text-liver-brown text-sm font-[300] mt-1.5 leading-relaxed line-clamp-2">{p.description}</p>
+              <h3 className="font-[500] text-ink leading-tight">{p.title}</h3>
+              <p className="text-muted text-sm font-[400] mt-0.5">{p.subtitle}</p>
+              <p className="text-muted text-sm font-[300] mt-1.5 leading-relaxed line-clamp-2">{p.description}</p>
               <div className="mt-3 flex justify-center -ml-[46px]">
                 <Button onClick={() => window.open(p.url, "_blank")} text={p.buttonText} />
               </div>
@@ -123,8 +122,8 @@ export default function Portfolio() {
 
       {/* Brands */}
       <div className="mt-4">
-        <h2 className="text-expresso font-[500]">Brands</h2>
-        <p className="text-liver-brown font-[300] mt-1 mb-8">
+        <h2 className="text-ink font-[500]">Brands</h2>
+        <p className="text-muted font-[300] mt-1 mb-8">
           Brands our team has worked with
         </p>
 

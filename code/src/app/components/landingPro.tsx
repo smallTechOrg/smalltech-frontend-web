@@ -2,23 +2,19 @@
 
 import { useState, useEffect, useId, type ReactNode } from "react";
 import Image from "next/image";
-import { techItems } from "../offerings/icons";
 import {
   hero,
   stats,
   services,
   ethos,
   programmes,
-  journey,
-  facilitators,
-  deliveryModel,
   products,
+  zer0,
+  aiStack,
   type Product,
 } from "../landing/content";
 import EmbedScript from "./embedScript";
 
-/* normalise "./foo.png" | "foo.png" -> "/foo.png" */
-const asset = (s: string) => "/" + s.replace(/^\.?\//, "");
 
 const clients = [
   { name: "UP Police", logo: "/up police.png", url: "https://www.linkedin.com/posts/madhyamakist_what-does-real-sovereign-ai-mean-for-india-ugcPost-7462018105133940736-wDwl", w: 90, h: 90 },
@@ -53,6 +49,7 @@ const openChat = () => {
 };
 
 const NAV: { label: string; href?: string; chat?: boolean }[] = [
+  { label: "Zer0", href: "#zer0" },
   { label: "What we do", href: "#services" },
   { label: "Portfolio", href: "#products" },
   { label: "AI Training", href: "#training" },
@@ -76,38 +73,26 @@ export default function LandingPro() {
 
       {/* ===== HEADER ===== */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-xl bg-seashell-pink/80 border-b border-redwood/15 shadow-[0_8px_30px_-12px_rgba(90,42,39,0.35)]"
-            : "backdrop-blur-md bg-seashell-pink/40 border-b border-transparent"
+        className={`sticky top-0 z-50 bg-readme border-b transition-colors duration-300 ${
+          scrolled ? "border-line" : "border-transparent"
         }`}
       >
         <div
           className={`max-w-[1200px] mx-auto flex items-center justify-between px-[4%] transition-all duration-300 ${
-            scrolled ? "py-2.5" : "py-4"
+            scrolled ? "py-3" : "py-5"
           }`}
         >
-          {/* Brand */}
-          <a href="#home" className="group flex items-center gap-3 shrink-0">
+          {/* Brand — supplied Primary lockup (symbol + wordmark + "Replicable Success").
+              Never retype it. Min width per guide is 120px; h-9 renders ~163px wide. */}
+          <a href="#home" className="flex items-center shrink-0" aria-label="smallTech home">
             <Image
-              src="/logo.png"
-              alt="SmallTech Logo"
-              width={0}
-              height={0}
-              sizes="64px"
+              src="/logo-smalltech.svg"
+              alt="smallTech"
+              width={416}
+              height={92}
               priority
-              className={`w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-                scrolled ? "h-9" : "h-11"
-              }`}
+              className={`w-auto transition-all duration-300 ${scrolled ? "h-9" : "h-10 md:h-12"}`}
             />
-            <span className="flex flex-col leading-none">
-              <span className="text-[24px] md:text-[26px] font-[800] text-deep-mocha leading-none tracking-[-0.01em]">
-                smallTech
-              </span>
-              <span className="text-[11px] md:text-[12px] font-[400] text-redwood leading-none tracking-[0.18em] uppercase mt-1">
-                replicable success
-              </span>
-            </span>
           </a>
 
           {/* Desktop nav */}
@@ -117,8 +102,8 @@ export default function LandingPro() {
                 <button
                   key={item.label}
                   onClick={openChat}
-                  className="relative text-[15px] font-[500] text-liver-brown hover:text-expresso transition-colors cursor-pointer
-                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[600] text-muted hover:text-ink transition-colors cursor-pointer
+                    after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-ink
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
@@ -127,8 +112,8 @@ export default function LandingPro() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative text-[15px] font-[500] text-liver-brown hover:text-expresso transition-colors
-                    after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[1.5px] after:rounded-full after:bg-redwood
+                  className="relative text-[15px] font-[600] text-muted hover:text-ink transition-colors
+                    after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-ink
                     after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
@@ -143,41 +128,32 @@ export default function LandingPro() {
         {/* ===== HERO ===== */}
         <section id="home" className="grid md:grid-cols-2 gap-8 items-center pt-12 md:pt-16 pb-10">
           <div className="flex flex-col">
-            <p className="text-redwood text-[12px] font-[700] tracking-[3px] uppercase mb-4">
+            <p className="label mb-4">
               {hero.eyebrow}
             </p>
-            <h1 className="text-[40px] sm:text-[52px] md:text-[58px] font-[700] leading-[1.05] text-deep-mocha mb-5">
+            <h1 className="text-[40px] sm:text-[48px] md:text-[56px] font-[700] leading-[1.1] tracking-[-0.02em] text-ink mb-5">
               {hero.titleLead}{" "}
-              <span className="bg-[linear-gradient(90deg,#8D5B4C,#B8887A)] bg-clip-text text-transparent">
+              {/* Gradient along the Gold Master scale (70 -> 50). Display size only. */}
+              <span className="bg-[linear-gradient(90deg,var(--color-gold-70),var(--color-gold))] bg-clip-text text-transparent">
                 {hero.titleAccent}
               </span>
             </h1>
-            <p className="text-[17px] md:text-lg font-[400] text-liver-brown max-w-xl mb-8">
+            <p className="text-[16px] md:text-[17px] font-[400] leading-[1.6] text-muted max-w-xl mb-8">
               {hero.body}
             </p>
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3">
               <a
-                href="#training"
-                className="rounded-full bg-expresso text-seashell-pink text-[15px] font-[600] px-6 py-3 shadow-[0_3px_8px_0_rgba(0,0,0,0.25)] hover:opacity-90 transition"
+                href="#zer0"
+                className="rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
               >
-                Explore AI Training
+                Explore Zer0
               </a>
               <a
                 href="#products"
-                className="rounded-full border border-brown/40 text-brown text-[15px] font-[500] px-6 py-3 hover:bg-white/40 transition"
+                className="rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
               >
                 See our portfolio
               </a>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {hero.pills.map((p) => (
-                <span
-                  key={p}
-                  className="bg-white/50 border border-brown/15 text-liver-brown text-[13px] font-[500] px-4 py-1.5 rounded-full"
-                >
-                  {p}
-                </span>
-              ))}
             </div>
           </div>
 
@@ -196,27 +172,94 @@ export default function LandingPro() {
           </div>
         </section>
 
-        {/* ===== PROOF + BRANDS ===== */}
-        <section className="pb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-[20px] bg-white/50 border border-white/60 px-5 py-6 text-center flex flex-col justify-center"
-              >
-                <p className="text-expresso text-[28px] md:text-[34px] font-[700] leading-none">
-                  {s.value}
+        {/* ===== ZER0 ===== */}
+        <section id="zer0" className="pb-16 scroll-mt-24">
+          <div className="surface-inverse rounded-[16px] p-7 md:p-12">
+            <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 md:gap-12 mb-9">
+              <div>
+                <p className="text-[13px] font-[600] uppercase tracking-[0.18em] text-gold mb-3">
+                  {zer0.label}
                 </p>
-                <p className="text-liver-brown text-[13px] font-[400] mt-2">{s.label}</p>
+                <h2 className="text-readme text-[30px] md:text-[38px] font-[700] leading-[1.15]">
+                  {zer0.title}
+                </h2>
               </div>
-            ))}
-          </div>
+              <p className="text-ink-muted text-[16px] font-[400] leading-[1.6] md:self-end">{zer0.body}</p>
+            </div>
 
-          <div className="mt-10">
-            <h2 className="text-expresso text-[20px] font-[600]">Brands</h2>
-            <p className="text-liver-brown font-[400] mt-1 mb-6">
-              Organisations we have worked with
-            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {zer0.products.map((z) => {
+                const body = (
+                  <>
+                    <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">Zer0</span>
+                    <strong className="text-readme text-[19px] font-[700] mb-2">{z.title}</strong>
+                    <span className="text-ink-muted text-[14px] font-[400] leading-[1.6] mb-4">{z.blurb}</span>
+                    {z.url && (
+                      <span className="mt-auto text-readme text-[14px] font-[600]">
+                        {z.cta ?? "Open"}{" "}
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                      </span>
+                    )}
+                  </>
+                );
+                return z.url ? (
+                  <a
+                    key={z.title}
+                    href={z.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <div key={z.title} className="rounded-[16px] surface-inset p-6 flex flex-col">
+                    {body}
+                  </div>
+                );
+              })}
+
+              {/* Fills the last cell and points to the full suite (incl. upcoming agents) on zer0 */}
+              <a
+                href={zer0.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group rounded-[16px] bg-gold hover:bg-gold-60 transition-colors p-6 flex flex-col"
+              >
+                <span className="text-ink text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">zer0.smalltech.in</span>
+                <strong className="text-ink text-[19px] font-[700] mb-2">See the full Zer0 suite</strong>
+                <span className="text-ink text-[14px] font-[400] leading-[1.6] mb-4">
+                  Every agent, how they work together, and what is coming next.
+                </span>
+                <span className="mt-auto text-ink text-[14px] font-[600]">
+                  Visit Zer0{" "}
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== CUSTOMERS (with proof numbers) ===== */}
+        <section id="customers" className="pb-16">
+          <div className="border-t border-line pt-10">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-8">
+              <div>
+                <p className="label mb-2">Customers</p>
+                <h2 className="text-ink text-[24px] md:text-[28px] font-[700] leading-[1.2]">
+                  Organisations we have worked with
+                </h2>
+              </div>
+              <dl className="grid grid-cols-3 gap-4 sm:gap-8 lg:max-w-[620px]">
+                {stats.map((s, idx) => (
+                  <div key={s.label} className={idx > 0 ? "border-l border-line pl-4 sm:pl-8" : ""}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd className="text-ink text-[28px] md:text-[34px] font-[700] leading-none">{s.value}</dd>
+                    <dd className="text-muted text-[12px] md:text-[13px] font-[400] leading-[1.4] mt-2">{s.label}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
             <div className="flex flex-col gap-3">
               {[clients, [...clients].reverse()].map((row, rowIdx) => (
                 <div key={rowIdx} className="brands-row relative overflow-hidden h-[90px] md:h-[110px]">
@@ -270,17 +313,17 @@ export default function LandingPro() {
         <section id="services" className="py-16">
           <SectionHead
             eyebrow="What we do"
-            title="Operationalising Agentic AI for you"
+            title="We build and run agentic software"
             sub={ethos}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((s) => (
               <div
                 key={s.title}
-                className="rounded-[20px] p-6 bg-white/50 border border-white/60 hover:bg-white/70 transition"
+                className="rounded-[16px] p-6 bg-surface border border-line hover:border-ink-line transition-colors"
               >
-                <strong className="block text-expresso text-[18px] font-[700] mb-2">{s.title}</strong>
-                <span className="text-liver-brown text-[14px] font-[400]">{s.blurb}</span>
+                <strong className="block text-ink text-[18px] font-[700] mb-2">{s.title}</strong>
+                <span className="text-muted text-[14px] font-[400] leading-[1.6]">{s.blurb}</span>
               </div>
             ))}
           </div>
@@ -304,184 +347,78 @@ export default function LandingPro() {
           </div>
         </section>
 
-        {/* ===== AI TRAINING ===== */}
-        <section id="training" className="py-16">
-          <div className="surface-inverse rounded-[28px] p-7 md:p-12 shadow-[0_18px_50px_-20px_rgba(45,25,22,0.55)]">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
-              <div>
-                <span className="inline-block bg-almond-silk text-expresso text-[12px] font-[700] tracking-wide px-3 py-1 rounded-full mb-3">
-                  AI Training
-                </span>
-                <h2 className="text-seashell-pink text-[30px] md:text-[38px] font-[700] leading-tight">
-                  Agentic AI is the new delegation
-                </h2>
+        {/* ===== AI TRAINING (secondary since SMA-8) ===== */}
+        <section id="training" className="py-16 scroll-mt-24">
+          <SectionHead
+            eyebrow="AI Training"
+            title="AI Training for Leaders & Tech Teams"
+            sub="Practitioner-led programmes for leadership and engineering teams. Every engagement starts with a one-day taster where the room builds a working agent."
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {programmes.map((p) => (
+              <div key={p.title} className="rounded-[16px] bg-surface border border-line p-6 flex flex-col">
+                <span className="text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">{p.kicker}</span>
+                <h3 className="text-ink text-[18px] font-[700] leading-tight mb-1">{p.title}</h3>
+                <p className="text-muted text-[13px] font-[600] mb-3">{p.format}</p>
+                <p className="text-muted text-[14px] font-[400] leading-[1.6]">{p.blurb}</p>
+                <Reveal label="What you get" tone="light" className="mt-auto pt-4">
+                  <ul className="space-y-1.5 pb-1">
+                    {p.outcomes.map((o) => (
+                      <li key={o} className="text-muted text-[13px] font-[400] flex gap-2">
+                        <span className="text-ink font-[700]">›</span>
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
               </div>
-              <p className="text-almond-silk font-[400] md:max-w-sm">
-                Your leaders already run multi-agent systems — they are called teams. You brief them,
-                set the gates, verify the outcomes. We extend that craft to software.
-              </p>
-            </div>
-
-            {/* Programmes — headline only; detail on request.
-                3 columns so the flagship spans a row and the other three fill the next. */}
-            <div className="grid md:grid-cols-3 gap-4">
-              {programmes.map((p) => (
-                <div
-                  key={p.title}
-                  className={`rounded-[20px] p-6 flex flex-col ${
-                    p.flagship
-                      ? "bg-[linear-gradient(to_bottom,#F2E3E1_0%,#DBC2BD_100%)] md:col-span-3"
-                      : "surface-inset-interactive"
-                  }`}
-                >
-                  <span
-                    className={`text-[11px] font-[700] tracking-[1.5px] uppercase mb-2 ${
-                      p.flagship ? "text-redwood" : "text-ember"
-                    }`}
-                  >
-                    {p.kicker}
-                  </span>
-                  <h3
-                    className={`text-[21px] font-[700] mb-1 ${
-                      p.flagship ? "text-expresso" : "text-seashell-pink"
-                    }`}
-                  >
-                    {p.title}
-                  </h3>
-                  <p
-                    className={`text-[13px] font-[600] mb-3 ${
-                      p.flagship ? "text-redwood" : "text-ember"
-                    }`}
-                  >
-                    {p.format}
-                  </p>
-                  <p
-                    className={`text-[14px] font-[400] ${
-                      p.flagship ? "text-liver-brown" : "text-almond-silk"
-                    }`}
-                  >
-                    {p.blurb}
-                  </p>
-
-                  <Reveal
-                    label="What you get"
-                    tone={p.flagship ? "light" : "dark"}
-                    className="mt-auto pt-4"
-                  >
-                    <ul
-                      className={`space-y-1.5 pb-1 ${
-                        p.flagship ? "sm:grid sm:grid-cols-2 sm:gap-x-6 sm:space-y-0" : ""
-                      }`}
-                    >
-                      {p.outcomes.map((o) => (
-                        <li
-                          key={o}
-                          className={`text-[13px] font-[400] flex gap-2 ${
-                            p.flagship ? "text-liver-brown sm:py-0.5" : "text-almond-silk"
-                          }`}
-                        >
-                          <span className="text-ember font-[700]">›</span>
-                          {o}
-                        </li>
-                      ))}
-                    </ul>
-                  </Reveal>
-                </div>
-              ))}
-            </div>
-
-            {/* Everything else, folded away */}
-            <div className="mt-4 grid md:grid-cols-3 gap-4">
-              <Panel title="The 12-week journey" hint="What ships, week by week">
-                <div className="grid grid-cols-2 gap-2.5 pt-4">
-                  {journey.map((j) => (
-                    <div key={j.when} className="rounded-[12px] surface-inset-quiet p-3">
-                      <span className="block text-ember text-[10px] font-[700] tracking-[1.5px] uppercase mb-1">
-                        {j.when}
-                      </span>
-                      <strong className="block text-seashell-pink text-[13px] font-[700] leading-snug">
-                        {j.title}
-                      </strong>
-                      <span className="text-almond-silk text-[11px] font-[400]">{j.ships}</span>
-                    </div>
-                  ))}
-                </div>
-              </Panel>
-
-              <Panel title="Between the Fridays" hint="How the cohort stays on track">
-                <div className="flex flex-col gap-2.5 pt-4">
-                  {deliveryModel.map((d) => (
-                    <div key={d.title} className="rounded-[12px] surface-inset-quiet p-3.5">
-                      <strong className="block text-seashell-pink text-[13px] font-[700] mb-1">
-                        {d.title}
-                      </strong>
-                      <span className="text-almond-silk text-[12px] font-[400]">{d.blurb}</span>
-                    </div>
-                  ))}
-                </div>
-              </Panel>
-
-              <Panel title="Senior practitioners only" hint="Who actually runs the room">
-                <div className="flex flex-col gap-2.5 pt-4">
-                  <p className="text-almond-silk text-[12px] font-[400]">{facilitators.summary}</p>
-                  {facilitators.people.map((p) => (
-                    <div key={p.name} className="rounded-[12px] surface-inset-quiet p-3.5 flex gap-3">
-                      <span className="shrink-0 grid place-items-center w-9 h-9 rounded-full bg-almond-silk text-expresso text-[13px] font-[700]">
-                        {p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                      </span>
-                      <div>
-                        <strong className="block text-seashell-pink text-[13px] font-[700] leading-tight">
-                          {p.name}
-                        </strong>
-                        <span className="block text-ember text-[10px] font-[700] tracking-[1.2px] uppercase mt-0.5 mb-1">
-                          {p.role}
-                        </span>
-                        <span className="text-almond-silk text-[11px] font-[400]">{p.bio}</span>
-                      </div>
-                    </div>
-                  ))}
-                  <p className="text-almond-silk text-[11px] font-[400] mt-1">
-                    Shipped and built at — {facilitators.employers.join(" · ")}
-                  </p>
-                </div>
-              </Panel>
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <a
-                href={mailto("AI Training enquiry")}
-                className="shrink-0 whitespace-nowrap rounded-full bg-seashell-pink text-expresso text-[15px] font-[600] px-6 py-3 hover:bg-white transition"
-              >
-                Talk to us about a cohort
-              </a>
-              <p className="text-almond-silk text-[13px] font-[400]">
-                Every engagement starts with a one-day taster for your leadership — the room builds a
-                working agent before you commit to anything.
-              </p>
-            </div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href={mailto("AI Training enquiry")}
+              className="inline-block rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
+            >
+              Talk to us about a cohort
+            </a>
+            <a
+              href="https://blog0.smalltech.in"
+              target="_blank"
+              rel="noreferrer"
+              className="text-ink text-[15px] font-[600] underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink"
+            >
+              Read what we are learning on blog0 →
+            </a>
           </div>
         </section>
 
-        {/* ===== TECHNOLOGIES ===== */}
+        {/* ===== TECH STACK (AI only) ===== */}
         <section id="tech" className="py-16">
           <SectionHead
-            eyebrow="Stack"
-            title="Technologies we support"
-            sub="Integrate AI across your existing tech stack."
+            eyebrow="Tech Stack"
+            title="The AI we build with"
+            sub="Model-agnostic by design. What we build with today, and what we are bringing in next, so you are never locked to one vendor."
           />
-          <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-9 gap-3">
-            {techItems.map((icon) => (
-              <div
-                key={icon.src}
-                className="aspect-square rounded-[16px] bg-white/45 border border-white/60 grid place-items-center hover:bg-white/70 transition"
-              >
-                <Image
-                  src={asset(icon.src)}
-                  alt={icon.alt}
-                  width={42}
-                  height={42}
-                  className="object-contain opacity-80"
-                />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="rounded-[16px] bg-ink p-6 flex flex-col justify-between">
+              <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">Partner</span>
+              <div>
+                <strong className="block text-readme text-[24px] font-[700] leading-tight mb-2">Anthropic partner</strong>
+                <span className="text-ink-muted text-[14px] font-[400] leading-[1.6]">
+                  We build on Claude and Claude Code every day, and teach teams to do the same.
+                </span>
+              </div>
+            </div>
+            {aiStack.map((g) => (
+              <div key={g.group} className="rounded-[16px] bg-surface border border-line p-6">
+                <span className="block text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-4">{g.group}</span>
+                <ul className="flex flex-wrap gap-2">
+                  {g.items.map((it) => (
+                    <li key={it} className="text-ink text-[14px] font-[600] bg-readme border border-line rounded-full px-3 py-1">
+                      {it}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -489,11 +426,10 @@ export default function LandingPro() {
       </div>
 
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-redwood/10 mt-8">
-        <div className="max-w-[1200px] mx-auto px-[4%] py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[14px] font-[400] text-deep-mocha">
+      <footer className="border-t border-line mt-8">
+        <div className="max-w-[1200px] mx-auto px-[4%] py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[14px] font-[400] text-ink">
           <div className="flex items-center gap-3 -mb-1 md:mb-0">
-            <Image src="/logo.png" alt="logo" width={0} height={0} sizes="36px" className="h-7 w-auto object-contain" />
-            <span className="font-[600]">smallTech</span>
+            <Image src="/logo-smalltech.svg" alt="smallTech" width={416} height={92} className="h-9 w-auto" />
           </div>
           <div className="contents md:flex md:flex-row md:items-center md:gap-6">
             <div className="flex items-center gap-6">
@@ -507,7 +443,7 @@ export default function LandingPro() {
                 linkedin
               </a>
             </div>
-            <span className="text-expresso">© 2026 madhyamakist pvt ltd</span>
+            <span className="text-muted">© 2026 madhyamakist pvt ltd</span>
           </div>
         </div>
       </footer>
@@ -534,7 +470,7 @@ function Reveal({
 }) {
   const [open, setOpen] = useState(false);
   const id = useId();
-  const colour = tone === "light" ? "text-redwood" : "text-almond-silk";
+  const colour = tone === "light" ? "text-ink" : "text-readme";
 
   return (
     <div className={className}>
@@ -559,51 +495,13 @@ function Reveal({
   );
 }
 
-/** A foldable panel on the dark training card. Collapsed by default. */
-function Panel({ title, hint, children }: { title: string; hint: string; children: ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const id = useId();
-
-  return (
-    <div className="rounded-[20px] surface-inset p-5 md:p-6 self-start w-full">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls={id}
-        className="w-full text-left cursor-pointer group"
-      >
-        <span className="flex items-start justify-between gap-3">
-          <span className="text-seashell-pink text-[16px] font-[600] leading-snug">{title}</span>
-          <span
-            className={`shrink-0 grid place-items-center w-6 h-6 rounded-full border border-cream/30 text-almond-silk text-[12px] transition-transform duration-300 ${
-              open ? "rotate-45" : ""
-            }`}
-            aria-hidden
-          >
-            +
-          </span>
-        </span>
-        <span className="block text-almond-silk text-[12px] font-[400] mt-1.5">{hint}</span>
-      </button>
-      <div
-        id={id}
-        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">{children}</div>
-      </div>
-    </div>
-  );
-}
-
 function TagPill({ tag, tone }: { tag: string; tone: "dark" | "light" }) {
   return (
     <span
       className={`inline-block text-[10px] font-[700] tracking-[1.5px] uppercase px-2.5 py-1 rounded-full ${
         tone === "dark"
-          ? "bg-white/10 text-ember border border-cream/25"
-          : "bg-expresso/10 text-redwood border border-redwood/20"
+          ? "text-gold border border-ink-line"
+          : "bg-readme text-muted border border-line"
       }`}
     >
       {tag}
@@ -613,7 +511,7 @@ function TagPill({ tag, tone }: { tag: string; tone: "dark" | "light" }) {
 
 function FeatureTile({ product }: { product: Product }) {
   return (
-    <div className="md:col-span-2 md:row-span-2 surface-inverse-accent rounded-[24px] p-7 flex flex-col justify-between shadow-[0_18px_45px_-20px_rgba(45,25,22,0.55)]">
+    <div className="md:col-span-2 md:row-span-2 surface-inverse-accent rounded-[16px] p-7 flex flex-col justify-between">
       <div>
         <TagPill tag={product.tag} tone="dark" />
         <Image
@@ -624,14 +522,14 @@ function FeatureTile({ product }: { product: Product }) {
           /* the icon artwork is stroked in espresso — invert it so it reads on the dark tile */
           className="object-contain mb-4 mt-5 opacity-85 [filter:brightness(0)_invert(1)]"
         />
-        <h3 className="text-seashell-pink text-[26px] font-[700] mb-1">{product.title}</h3>
-        <p className="text-almond-silk text-[14px] font-[500] mb-3">{product.role}</p>
-        <p className="text-almond-silk text-[15px] font-[400]">{product.description}</p>
+        <h3 className="text-readme text-[26px] font-[700] mb-1">{product.title}</h3>
+        <p className="text-ink-muted text-[14px] font-[500] mb-3">{product.role}</p>
+        <p className="text-ink-muted text-[15px] font-[400]">{product.description}</p>
         {product.points && (
-          <ul className="mt-5 space-y-2 border-t border-cream/15 pt-5">
+          <ul className="mt-5 space-y-2 border-t border-ink-line pt-5">
             {product.points.map((pt) => (
-              <li key={pt} className="text-almond-silk text-[14px] font-[400] flex gap-2.5">
-                <span className="text-ember font-[700]">›</span>
+              <li key={pt} className="text-ink-muted text-[14px] font-[400] flex gap-2.5">
+                <span className="text-gold font-[700]">›</span>
                 {pt}
               </li>
             ))}
@@ -643,7 +541,7 @@ function FeatureTile({ product }: { product: Product }) {
           href={product.url}
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 rounded-full bg-seashell-pink text-expresso text-[15px] font-[600] px-6 py-3 hover:bg-white transition"
+          className="group inline-flex items-center gap-2 rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
         >
           {product.cta}
           <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
@@ -656,28 +554,29 @@ function FeatureTile({ product }: { product: Product }) {
 function SmallTile({ product, className = "" }: { product: Product; className?: string }) {
   return (
     <div
-      className={`rounded-[24px] p-6 flex items-start gap-5 bg-[linear-gradient(to_bottom,#F2E3E1_0%,#DBC2BD_100%)] shadow-[0_3px_20px_0_rgba(0,0,0,0.15)] ${className}`}
+      className={`rounded-[24px] p-6 flex items-start gap-5 bg-surface border border-line ${className}`}
     >
       <Image
         src={product.image}
         alt={product.title}
         width={56}
         height={56}
-        className="object-contain opacity-70 shrink-0 mt-1"
+        /* legacy icon artwork is drawn in the old brown — flatten it to Terminal Ink */
+        className="object-contain shrink-0 mt-1 [filter:brightness(0)] opacity-85"
       />
       <div className="flex flex-col">
         <div className="mb-2">
           <TagPill tag={product.tag} tone="light" />
         </div>
-        <h3 className="text-expresso text-[19px] font-[700] leading-tight">{product.title}</h3>
-        <p className="text-redwood text-[13px] font-[600] mb-1.5">{product.role}</p>
-        <p className="text-liver-brown text-[14px] font-[400] mb-3">{product.description}</p>
+        <h3 className="text-ink text-[19px] font-[700] leading-tight">{product.title}</h3>
+        <p className="text-muted text-[13px] font-[600] mb-1.5">{product.role}</p>
+        <p className="text-muted text-[14px] font-[400] leading-[1.6] mb-3">{product.description}</p>
         <div className="mt-auto flex flex-wrap items-center gap-4">
           <a
             href={product.url}
             target="_blank"
             rel="noreferrer"
-            className="text-expresso text-[14px] font-[600] hover:underline"
+            className="text-ink text-[14px] font-[600] underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink"
           >
             {product.cta} →
           </a>
@@ -686,7 +585,7 @@ function SmallTile({ product, className = "" }: { product: Product; className?: 
               href={product.altUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-redwood text-[14px] font-[500] hover:underline"
+              className="text-muted text-[14px] font-[500] hover:underline"
             >
               {product.altCta}
             </a>
@@ -700,9 +599,9 @@ function SmallTile({ product, className = "" }: { product: Product; className?: 
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub: string }) {
   return (
     <div className="mb-8">
-      <p className="text-redwood text-[12px] font-[700] tracking-[3px] uppercase mb-2">{eyebrow}</p>
-      <h2 className="text-deep-mocha text-[30px] md:text-[36px] font-[700] leading-tight">{title}</h2>
-      <p className="text-liver-brown text-[16px] md:text-[17px] font-[400] mt-1">{sub}</p>
+      <p className="label mb-2">{eyebrow}</p>
+      <h2 className="text-ink text-[28px] md:text-[36px] font-[700] leading-[1.2] tracking-[-0.01em]">{title}</h2>
+      <p className="text-muted text-[16px] md:text-[17px] font-[400] leading-[1.6] mt-2">{sub}</p>
     </div>
   );
 }

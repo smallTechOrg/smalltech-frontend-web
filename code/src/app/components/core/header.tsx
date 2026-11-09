@@ -16,7 +16,7 @@ export default function Header() {
 
       <div className="flex flex-col leading-none">
         <h1 className="text-[32px] leading-none">smallTech</h1>
-        <h3 className="text-liver-brown font-[200] text-[16px] leading-none">
+        <h3 className="text-muted font-[200] text-[16px] leading-none">
           replicable success
         </h3>
       </div>

@@ -10,7 +10,7 @@ export default function EmbedScript() {
     script.setAttribute('data-chat-url', `${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed`);
     script.setAttribute('data-display-mobile', 'true');
     script.setAttribute('data-tagline', 'Talk To Us');
-    script.setAttribute('data-colour', '#473733');
+    script.setAttribute('data-colour', '#1C1B18');
     script.async = true;
 
     document.body.appendChild(script);

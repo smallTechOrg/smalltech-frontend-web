@@ -1,45 +1,51 @@
 @import "tailwindcss";
 
+/* Brand type scale (Montserrat only):
+   Title 56/1.1 Bold · Heading 28/1.2 Bold · Subheading 20/1.3 SemiBold
+   Label 13 caps +0.18em SemiBold · Body 16/1.6 Regular · Caption 12/1.5 Regular */
 @layer components {
 :root {
-  --background: var(--color-bg-gradient);
-  --foreground: var(--color-deep-mocha);
+  --background: var(--color-readme);
+  --foreground: var(--color-ink);
   --font-sans: var(--font-montserrat);
 }
 
 h1 {
-  @apply font-[500]
-  text-[24px]
-  sm:text-[30px]
-  md:text-[32px]
-  lg:text-3xl
-  text-deep-mocha;
+  @apply font-[700]
+  leading-[1.1]
+  text-[32px]
+  sm:text-[40px]
+  md:text-[48px]
+  lg:text-[56px]
+  text-ink;
 }
 h2 {
-  @apply font-[400]
-  text-[18px]
-  sm:text-[22px]
-  md:text-[26px]
-  lg:text-2xl
-  text-deep-mocha;
+  @apply font-[700]
+  leading-[1.2]
+  text-[22px]
+  sm:text-[24px]
+  md:text-[28px]
+  text-ink;
 }
 h3 {
-  @apply font-[300]
-  text-[16px]
+  @apply font-[600]
+  leading-[1.3]
+  text-[17px]
   sm:text-[18px]
   md:text-[20px]
-  lg:text-xl
-  text-mauve-bark
+  text-ink;
 }
 p {
-  @apply 
-  
-  font-[300]
-  text-[14px] 
+  @apply font-[400]
+  leading-[1.6]
+  text-[15px]
   sm:text-[16px]
-  md:text-[17px]
-  lg:text-lg
-  text-liver-brown;
+  text-muted;
+}
+
+/* Small caps label used above section titles */
+.label {
+  @apply text-[13px] font-[600] uppercase tracking-[0.18em] text-muted;
 }
 
 }
