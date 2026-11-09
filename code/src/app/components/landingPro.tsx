@@ -397,9 +397,9 @@ export default function LandingPro() {
           <SectionHead
             eyebrow="Tech Stack"
             title="The AI we build with"
-            sub="Model-agnostic by design: we pick the right model for each job and keep you free to switch."
+            sub="Model-agnostic by design. What we build with today, and what we are bringing in next, so you are never locked to one vendor."
           />
-          <div className="grid md:grid-cols-[1fr_2fr] gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="rounded-[16px] bg-ink p-6 flex flex-col justify-between">
               <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">Partner</span>
               <div>
@@ -409,18 +409,18 @@ export default function LandingPro() {
                 </span>
               </div>
             </div>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {aiStack.map((g) => (
-                <div key={g.group} className="rounded-[16px] bg-surface border border-line p-6">
-                  <span className="block text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">{g.group}</span>
-                  <ul className="space-y-2">
-                    {g.items.map((it) => (
-                      <li key={it} className="text-ink text-[15px] font-[600]">{it}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            {aiStack.map((g) => (
+              <div key={g.group} className="rounded-[16px] bg-surface border border-line p-6">
+                <span className="block text-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-4">{g.group}</span>
+                <ul className="flex flex-wrap gap-2">
+                  {g.items.map((it) => (
+                    <li key={it} className="text-ink text-[14px] font-[600] bg-readme border border-line rounded-full px-3 py-1">
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
       </div>

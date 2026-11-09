@@ -332,7 +332,24 @@ export const products: Product[] = [
 
 /** AI-only stack. Third-party names are shown as text, not logos. */
 export const aiStack: { group: string; items: string[] }[] = [
-  { group: "Frontier models", items: ["Anthropic Claude", "OpenAI GPT", "Google Gemini"] },
-  { group: "Agent frameworks", items: ["LangChain", "LangGraph", "LiteLLM", "Claude Code"] },
-  { group: "Inference & platforms", items: ["Groq", "OpenRouter", "Google Vertex AI"] },
+  {
+    group: "Frontier models",
+    items: ["Anthropic Claude", "OpenAI GPT", "Google Gemini", "Meta Llama", "Mistral", "DeepSeek", "Qwen"],
+  },
+  {
+    group: "Agent frameworks",
+    items: ["LangChain", "LangGraph", "LiteLLM", "Claude Agent SDK", "OpenAI Agents SDK", "CrewAI", "Pydantic AI"],
+  },
+  {
+    group: "Agent tooling",
+    items: ["Claude Code", "Model Context Protocol", "Playwright", "Browser Use", "E2B sandboxes"],
+  },
+  {
+    group: "Inference & platforms",
+    items: ["Google Vertex AI", "Amazon Bedrock", "Azure AI Foundry", "Groq", "OpenRouter", "Ollama", "vLLM", "Hugging Face"],
+  },
+  {
+    group: "Retrieval, evals & observability",
+    items: ["pgvector", "Qdrant", "LlamaIndex", "LangSmith", "Langfuse", "Ragas"],
+  },
 ];
