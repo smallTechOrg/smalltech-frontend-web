@@ -13,16 +13,16 @@ export function Button({ text, onClick, className }: ButtonProps) {
     sm:w-[180px] sm:h-[52px]
     md:w-[200px] md:h-[56px]
     lg:w-[213px] lg:h-[62px]
-        rounded-[60px] 
-        bg-expresso
+        rounded-[6px] 
+        bg-gold
        
-        shadow-[0_3px_5px_0_rgba(0,0,0,0.4)]
-        hover:opacity-90 transition
+        
+        hover:bg-gold-60 transition-colors
         cursor-pointer
         ${className || ""}
       `}
         >
-            <p className="font-[500] text-seashell-pink">    {text}</p>
+            <p className="font-[600] text-ink">    {text}</p>
         
 
         </button>

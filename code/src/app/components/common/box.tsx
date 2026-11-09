@@ -16,7 +16,7 @@ export default function Box({ image,
       className={`
         relative
         rounded-[30px]
-        bg-[linear-gradient(to_bottom,#F2E3E1_0%,#DBC2BD_100%)]
+        bg-surface border border-line
         md:p-6 p-4
         flex flex-col md:flex-col
         md:items-center
@@ -37,8 +37,8 @@ export default function Box({ image,
           className="object-contain w-20 h-20 shrink-0"
         />
         <div className="flex flex-col flex-1">
-          <h3 className="font-semibold text-expresso">{title}</h3>
-          <p className="text-liver-brown text-sm">{subtitle}</p>
+          <h3 className="font-semibold text-ink">{title}</h3>
+          <p className="text-muted text-sm">{subtitle}</p>
           {buttonText && (
             <div className="mt-4 flex justify-center -ml-12">
               <Button onClick={onButtonClick} text={buttonText} />
@@ -60,14 +60,14 @@ export default function Box({ image,
         />
 
         {/* TITLE */}
-        <h2 className="font-[500] mt-2 text-expresso">{title}</h2>
+        <h2 className="font-[500] mt-2 text-ink">{title}</h2>
 
         {/* SUBTITLE */}
-        <h3 className="font-[400] text-liver-brown mt-2 ">{subtitle}</h3>
+        <h3 className="font-[400] text-muted mt-2 ">{subtitle}</h3>
 
         {/* DESCRIPTION (only desktop) */}
         {description && (
-          <p className="font-[300] text-liver-brown mt-3 hidden md:block">
+          <p className="font-[300] text-muted mt-3 hidden md:block">
             {description}
           </p>
         )}

@@ -12,19 +12,19 @@ export default function Footer({ className = "" }) {
             className="flex hover:underline space-x-2 items-center"
           >
             <Image src="./blog.png" width={15} height={15} alt="blog" className="opacity-60 md:w-6 md:h-6" />
-            <span className=" text-expresso ">blog</span>
+            <span className=" text-ink ">blog</span>
           </Link>
           <Link
             href="mailto:contact@smalltech.in"
             className="flex items-center hover:underline space-x-2"
           >
             <Image src="./email.png" width={15} height={15} alt="email" className="opacity-60 md:w-6 md:h-6"/>
-            <span className="text-expresso ">mail</span>
+            <span className="text-ink ">mail</span>
           </Link>
           
           <div className="flex items-center space-x-2">
             <Image src="./copyright.png" width={17} height={17} alt="copyright" className="opacity-60 md:w-6 md:h-6"/>
-            <span className="text-expresso">{currentYear} madhyamakist pvt ltd</span>
+            <span className="text-ink">{currentYear} madhyamakist pvt ltd</span>
           </div>
         </div>
 
