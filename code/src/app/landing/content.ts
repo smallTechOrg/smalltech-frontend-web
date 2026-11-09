@@ -41,13 +41,13 @@ export const zer0: {
   products: [
     {
       title: "sales0",
-      blurb: "End-to-end sales: finds buyer enquiries, keeps the CRM, drafts outreach for your approval and follows up.",
+      blurb: "The AI-native CRM: finds buyer enquiries, keeps the pipeline, drafts outreach for your approval and follows up.",
       url: "https://sales0.smalltech.in",
     },
     {
-      title: "workshop0",
-      blurb: "Runs hands-on workshops: content-rich milestones, participants join with a name, a live dashboard for the room.",
-      url: "https://github.com/smallTechOrg/workshop0",
+      title: "chatbot0",
+      blurb: "An AI chat agent on your website: answers visitors, captures leads and hands you the warm conversation.",
+      url: "https://chatbot0.smalltech.in",
     },
     {
       title: "data0",
@@ -275,8 +275,8 @@ export const products: Product[] = [
     cta: "Visit Zer0",
     url: "https://zer0.smalltech.in",
     points: [
-      "sales0: end-to-end sales, from enquiry to follow-up",
-      "workshop0: hands-on workshops, run live",
+      "sales0: the AI-native CRM, from enquiry to follow-up",
+      "chatbot0: an AI chat agent for your website",
       "data0: your data, asked in plain English",
       "cloud0: cloud spend and errors in check",
     ],
