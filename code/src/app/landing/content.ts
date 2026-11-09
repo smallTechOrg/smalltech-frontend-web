@@ -24,21 +24,50 @@ export const hero = {
 /* ------------------------------------------------------------------- zer0 */
 
 /** Zer0 leads the page (SMA-8). Umbrella site: zer0.smalltech.in. */
-export const zer0 = {
+export const zer0: {
+  url: string;
+  label: string;
+  title: string;
+  body: string;
+  products: { title: string; blurb: string; url?: string; cta?: string }[];
+  upcoming: string[];
+} = {
   url: "https://zer0.smalltech.in",
   label: "Zer0 by smallTech",
   title: "Operationalising agentic AI for small businesses",
   body:
-    "Classical workflows were built for people passing work between inboxes and spreadsheets. " +
-    "Zer0 redesigns them so agents run the repetitive steps end to end and your people make the calls, " +
-    "with an approval gate and an audit trail at every step.",
+    "Zer0 is a multi-agent operating system for small businesses. Classical workflows were built for people " +
+    "passing work between inboxes and spreadsheets; Zer0 agents run the repetitive steps end to end and your " +
+    "people make the calls, with an approval gate and an audit trail at every step.",
   products: [
-    { title: "Sales Agent", blurb: "Finds, researches and qualifies prospects, then hands you the warm conversation.", url: "https://sales0.smalltech.in" },
-    { title: "Inbox Agent", blurb: "Collapses hundreds of threads into a short list of decisions. Never deletes anything.", url: "https://github.com/smallTechOrg/zero-inbox-agent" },
-    { title: "Data Analyst", blurb: "Ask your spreadsheets questions in plain English and get explainable answers.", url: "https://data-analysis-agent-870371939888.us-central1.run.app/app/" },
-    { title: "Vanguard", blurb: "AI-first security audits with approval gates and immutable audit logs.", url: "https://github.com/smallTechOrg/ai-security-agency" },
+    {
+      title: "sales0",
+      blurb: "End-to-end sales: finds buyer enquiries, keeps the CRM, drafts outreach for your approval and follows up.",
+      url: "https://sales0.smalltech.in",
+    },
+    {
+      title: "workshop0",
+      blurb: "Runs hands-on workshops: content-rich milestones, participants join with a name, a live dashboard for the room.",
+      url: "https://github.com/smallTechOrg/workshop0",
+    },
+    {
+      title: "data0",
+      blurb: "Upload a spreadsheet and ask questions in plain English. Explainable answers with inline charts.",
+    },
+    {
+      title: "cloud0",
+      blurb: "Keeps cloud spend and errors in check: GCP billing reports, alerts and error tracking.",
+      url: "https://github.com/smallTechOrg/cloud0",
+    },
+    {
+      title: "zero-shot-harness",
+      blurb: "Our Claude Code skills: give it a one-line idea and get a working, tested, phased project, spec-first.",
+      url: "https://github.com/smallTechOrg/zero-shot-harness",
+    },
   ],
+  upcoming: ["inbox0", "recruiter0", "router0"],
 };
+
 
 export const stats: { value: string; label: string }[] = [
   { value: "30+", label: "CXOs, MDs & HODs through our training programmes" },
@@ -239,6 +268,24 @@ export interface Product {
  */
 export const products: Product[] = [
   {
+    image: "/robot.svg",
+    title: "Zer0",
+    role: "A multi-agent operating system for small businesses",
+    tag: "Zer0 suite",
+    description:
+      "Agents that run a small business's everyday workflows end to end, with a human approval gate wherever it matters and an audit trail for every step.",
+    cta: "Visit Zer0",
+    url: "https://zer0.smalltech.in",
+    points: [
+      "sales0: end-to-end sales, from enquiry to follow-up",
+      "workshop0: hands-on workshops, run live",
+      "data0: your data, asked in plain English",
+      "cloud0: cloud spend and errors in check",
+      "Coming next: inbox0, recruiter0, router0",
+    ],
+    flagship: true,
+  },
+  {
     image: "/local.png",
     title: "#local",
     role: "Civic issues, solved together",
@@ -247,23 +294,6 @@ export const products: Product[] = [
       "A location-based platform where neighbours report potholes, illegal dumping, broken lights and other civic issues, and work together to get them resolved. Our longest-running product, built and run by us.",
     cta: "Visit #local",
     url: "https://local.smalltech.in",
-    points: [
-      "Report an issue with a photo and a pin on the map",
-      "Neighbours discover and discuss issues near them",
-      "Push notifications keep everyone in the loop",
-      "Web and mobile apps on one backend",
-    ],
-    flagship: true,
-  },
-  {
-    image: "/robot.svg",
-    title: "Zer0 Sales Agent",
-    role: "AI agents for small businesses",
-    tag: "Zer0",
-    description:
-      "A chat agent on your website that answers visitors, captures leads and hands you the warm conversation, with a lead dashboard and a free plan.",
-    cta: "Visit Sales Agent",
-    url: "https://sales0.smalltech.in",
   },
   {
     image: "/marketplace.png",
@@ -274,16 +304,6 @@ export const products: Product[] = [
       "AI-powered scores for every listed stock across four dimensions and three timeframes. We built the MVP and mentor the team. MeitY-funded.",
     cta: "Visit site",
     url: "https://finwerse.com",
-  },
-  {
-    image: "/workshop.svg",
-    title: "Workshop Helmsman",
-    role: "Live cohort tracking",
-    tag: "Open Source",
-    description:
-      "The self-hosted milestone tracker behind our own workshops: participants join with a name, facilitators watch the whole room live.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/workshop0",
   },
   {
     image: "/app.svg",
@@ -298,16 +318,6 @@ export const products: Product[] = [
     altUrl: "https://github.com/smallTechOrg/GLITCH",
   },
   {
-    image: "/python.png",
-    title: "zero-shot boilerplate",
-    role: "Agent starting point",
-    tag: "Open Source",
-    description:
-      "A spec-first baseline agent (FastAPI, LangGraph, provider-agnostic LLM) with spec templates and the sub-agent team already wired in.",
-    cta: "View on GitHub",
-    url: "https://github.com/smallTechOrg/zero-shot-claude-boilerplate",
-  },
-  {
     image: "/draw.png",
     title: "zero-shot-harness",
     role: "Installable skills for Claude & Hermes",
@@ -318,4 +328,5 @@ export const products: Product[] = [
     url: "https://github.com/smallTechOrg/zero-shot-harness",
   },
 ];
+
 

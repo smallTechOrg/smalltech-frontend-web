@@ -189,23 +189,49 @@ export default function LandingPro() {
               <p className="text-ink-muted text-[16px] font-[400] leading-[1.6] md:self-end">{zer0.body}</p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {zer0.products.map((z) => (
-                <a
-                  key={z.title}
-                  href={z.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
-                >
-                  <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">Zer0</span>
-                  <strong className="text-readme text-[19px] font-[700] mb-2">{z.title}</strong>
-                  <span className="text-ink-muted text-[14px] font-[400] leading-[1.6] mb-4">{z.blurb}</span>
-                  <span className="mt-auto text-readme text-[14px] font-[600]">
-                    Open <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-                  </span>
-                </a>
-              ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {zer0.products.map((z) => {
+                const body = (
+                  <>
+                    <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">Zer0</span>
+                    <strong className="text-readme text-[19px] font-[700] mb-2">{z.title}</strong>
+                    <span className="text-ink-muted text-[14px] font-[400] leading-[1.6] mb-4">{z.blurb}</span>
+                    {z.url && (
+                      <span className="mt-auto text-readme text-[14px] font-[600]">
+                        {z.cta ?? "Open"}{" "}
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                      </span>
+                    )}
+                  </>
+                );
+                return z.url ? (
+                  <a
+                    key={z.title}
+                    href={z.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <div key={z.title} className="rounded-[16px] surface-inset p-6 flex flex-col">
+                    {body}
+                  </div>
+                );
+              })}
+
+              {/* Upcoming agents */}
+              <div className="rounded-[16px] border border-dashed border-ink-line p-6 flex flex-col">
+                <span className="text-ink-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">Coming next</span>
+                <div className="flex flex-wrap gap-2">
+                  {zer0.upcoming.map((u) => (
+                    <span key={u} className="text-readme text-[15px] font-[600] border border-ink-line rounded-full px-3 py-1">
+                      {u}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="mt-8">
