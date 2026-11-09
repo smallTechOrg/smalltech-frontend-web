@@ -221,28 +221,22 @@ export default function LandingPro() {
                 );
               })}
 
-              {/* Upcoming agents */}
-              <div className="rounded-[16px] border border-dashed border-ink-line p-6 flex flex-col">
-                <span className="text-ink-muted text-[11px] font-[700] tracking-[1.5px] uppercase mb-3">Coming next</span>
-                <div className="flex flex-wrap gap-2">
-                  {zer0.upcoming.map((u) => (
-                    <span key={u} className="text-readme text-[15px] font-[600] border border-ink-line rounded-full px-3 py-1">
-                      {u}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8">
+              {/* Fills the last cell and points to the full suite (incl. upcoming agents) on zer0 */}
               <a
                 href={zer0.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
+                className="group rounded-[16px] bg-gold hover:bg-gold-60 transition-colors p-6 flex flex-col"
               >
-                Visit zer0.smalltech.in
-                <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                <span className="text-ink text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">zer0.smalltech.in</span>
+                <strong className="text-ink text-[19px] font-[700] mb-2">See the full Zer0 suite</strong>
+                <span className="text-ink text-[14px] font-[400] leading-[1.6] mb-4">
+                  Every agent, how they work together, and what is coming next.
+                </span>
+                <span className="mt-auto text-ink text-[14px] font-[600]">
+                  Visit Zer0{" "}
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
               </a>
             </div>
           </div>

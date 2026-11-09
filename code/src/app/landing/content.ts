@@ -30,7 +30,6 @@ export const zer0: {
   title: string;
   body: string;
   products: { title: string; blurb: string; url?: string; cta?: string }[];
-  upcoming: string[];
 } = {
   url: "https://zer0.smalltech.in",
   label: "Zer0 by smallTech",
@@ -65,7 +64,6 @@ export const zer0: {
       url: "https://github.com/smallTechOrg/zero-shot-harness",
     },
   ],
-  upcoming: ["inbox0", "recruiter0", "router0"],
 };
 
 
@@ -281,7 +279,6 @@ export const products: Product[] = [
       "workshop0: hands-on workshops, run live",
       "data0: your data, asked in plain English",
       "cloud0: cloud spend and errors in check",
-      "Coming next: inbox0, recruiter0, router0",
     ],
     flagship: true,
   },
