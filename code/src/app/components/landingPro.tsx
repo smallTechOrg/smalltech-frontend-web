@@ -191,7 +191,6 @@ export default function LandingPro() {
               {zer0.products.map((z) => {
                 const body = (
                   <>
-                    <span className="text-gold text-[11px] font-[700] tracking-[1.5px] uppercase mb-2">Zer0</span>
                     <strong className="text-readme text-[19px] font-[700] mb-2">{z.title}</strong>
                     <span className="text-ink-muted text-[14px] font-[400] leading-[1.6] mb-4">{z.blurb}</span>
                     {z.url && (
