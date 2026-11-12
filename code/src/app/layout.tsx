@@ -72,32 +72,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YTYS0G2P7L"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YTYS0G2P7L');
-          `}
-        </Script>
-        {/* Google Ads Conversion Tracking */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17476588629"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17476588629'); 
-          `}
-        </Script>
+        {/* smallTech analytics: one GA4 property for every site (see public/st-analytics.js) */}
+        <Script src="/st-analytics.js" strategy="afterInteractive" />
       </head>
       <body
         className={`${montserrat.variable} antialiased min-h-screen flex flex-col`}
