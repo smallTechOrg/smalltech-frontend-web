@@ -17,13 +17,13 @@ Create two environments in **Repo → Settings → Environments**:
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_API_URL` | Production API base URL |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics measurement ID |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No longer used. Analytics is `code/public/st-analytics.js` (one GA4 property, production hostnames only) |
 
 ### `staging`
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_API_URL` | Staging API base URL |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics measurement ID |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No longer used. Analytics is `code/public/st-analytics.js` (one GA4 property, production hostnames only) |
 | `VERCEL_ORG_ID` | From `vercel link` (see below) |
 | `VERCEL_PROJECT_ID` | From `vercel link` (see below) |
 | `VERCEL_TOKEN` | Vercel personal access token |
