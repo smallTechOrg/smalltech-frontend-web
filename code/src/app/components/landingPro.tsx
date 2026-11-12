@@ -144,13 +144,13 @@ export default function LandingPro() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="#zer0"
-                className="rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
+                className="ga-cta rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
               >
                 Explore Zer0
               </a>
               <a
                 href="#products"
-                className="rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
+                className="ga-cta rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
               >
                 See our portfolio
               </a>
@@ -207,7 +207,7 @@ export default function LandingPro() {
                     href={z.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
+                    className="ga-cta group rounded-[16px] surface-inset-interactive p-6 flex flex-col"
                   >
                     {body}
                   </a>
@@ -376,7 +376,7 @@ export default function LandingPro() {
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a
               href={mailto("AI Training enquiry")}
-              className="inline-block rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
+              className="ga-cta inline-block rounded-[6px] border border-ink text-ink text-[15px] font-[600] px-6 py-3 hover:bg-surface transition-colors"
             >
               Talk to us about a cohort
             </a>
@@ -540,7 +540,7 @@ function FeatureTile({ product }: { product: Product }) {
           href={product.url}
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
+          className="ga-cta group inline-flex items-center gap-2 rounded-[6px] bg-gold text-ink text-[15px] font-[600] px-6 py-3 hover:bg-gold-60 transition-colors"
         >
           {product.cta}
           <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
