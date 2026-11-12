@@ -16,9 +16,9 @@ export const hero = {
   titleLead: "Changing how the world",
   titleAccent: "works.",
   body:
-    "We are a collective of engineers, designers and thinkers whose mission is to ensure tech enables " +
-    "the democratisation of power, not the concentration of it. We don't just build and scale agentic " +
-    "software, we aim to do so equitably and sustainably.",
+    "We are a collective of engineers, designers and thinkers on a mission to ensure tech enables " +
+    "the democratisation of power, not the concentration of it. We aim to do this by building tools " +
+    "and platforms that empower individuals and communities to work towards a more equitable future.",
 };
 
 /* ------------------------------------------------------------------- zer0 */
@@ -33,11 +33,11 @@ export const zer0: {
 } = {
   url: "https://zer0.smalltech.in",
   label: "Zer0 by smallTech",
-  title: "Operationalising agentic AI for small businesses",
+  title: "Operationalising agentic AI for everyone",
   body:
-    "Zer0 is a multi-agent operating system for small businesses. Classical workflows were built for people " +
-    "passing work between inboxes and spreadsheets; Zer0 agents run the repetitive steps end to end and your " +
-    "people make the calls, with an approval gate and an audit trail at every step.",
+    "Zer0 is a multi-agent operating system for businesses. Classical workflows were built for people " +
+    "passing work between multiple tools. Zer0 agents bring it all together under one control plane. " +
+    "Zer0 will not replace your workers, it will help them compete with businesses ten times your size.",
   products: [
     {
       title: "sales0",
@@ -45,21 +45,22 @@ export const zer0: {
       url: "https://sales0.smalltech.in",
     },
     {
+      title: "workshop0",
+      blurb: "A workshop assistant for facilitator-led hands-on labs: milestones, a live dashboard of the whole room and a built-in help desk.",
+      url: "https://github.com/smallTechOrg/workshop0",
+    },
+    {
+      title: "data0",
+      blurb: "A data analyst agent for all of your analytics needs. Ask questions of your data in plain English and get explainable answers with inline charts.",
+      url: "https://github.com/smallTechOrg/Zer0-data-agent",
+    },
+    {
       title: "chatbot0",
       blurb: "An AI chat agent on your website: answers visitors, captures leads and hands you the warm conversation.",
       url: "https://chatbot0.smalltech.in",
     },
     {
-      title: "data0",
-      blurb: "Upload a spreadsheet and ask questions in plain English. Explainable answers with inline charts.",
-    },
-    {
-      title: "cloud0",
-      blurb: "Keeps cloud spend and errors in check: GCP billing reports, alerts and error tracking.",
-      url: "https://github.com/smallTechOrg/cloud0",
-    },
-    {
-      title: "zero-shot-harness",
+      title: "harness0",
       blurb: "Our Claude Code skills: give it a one-line idea and get a working, tested, phased project, spec-first.",
       url: "https://github.com/smallTechOrg/zero-shot-harness",
     },
@@ -278,7 +279,6 @@ export const products: Product[] = [
       "sales0: the AI-native CRM, from enquiry to follow-up",
       "chatbot0: an AI chat agent for your website",
       "data0: your data, asked in plain English",
-      "cloud0: cloud spend and errors in check",
     ],
     flagship: true,
   },
@@ -316,7 +316,7 @@ export const products: Product[] = [
   },
   {
     image: "/draw.png",
-    title: "zero-shot-harness",
+    title: "harness0",
     role: "Installable skills for Claude & Hermes",
     tag: "Open Source",
     description:

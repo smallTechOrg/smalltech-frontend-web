@@ -333,7 +333,7 @@ export default function LandingPro() {
           <SectionHead
             eyebrow="Our Portfolio"
             title="AI-native products we build and run"
-            sub="Everything we ship, from autonomous agents to civic platforms — the same practice we teach."
+            sub="Everything we ship, from autonomous agents to civic platforms"
           />
           <div className="grid md:grid-cols-4 md:auto-rows-[1fr] gap-4">
             {products.map((p) =>
