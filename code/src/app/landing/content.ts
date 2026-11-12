@@ -52,7 +52,7 @@ export const zer0: {
     {
       title: "data0",
       blurb: "A data analyst agent for all of your analytics needs. Ask questions of your data in plain English and get explainable answers with inline charts.",
-      url: "https://github.com/smallTechOrg/Zer0-data-agent",
+      url: "https://data0.smalltech.in",
     },
     {
       title: "chatbot0",
