@@ -133,8 +133,8 @@ export default function LandingPro() {
             </p>
             <h1 className="text-[40px] sm:text-[48px] md:text-[56px] font-[700] leading-[1.1] tracking-[-0.02em] text-ink mb-5">
               {hero.titleLead}{" "}
-              {/* Gradient along the Gold Master scale (70 -> 50). Display size only. */}
-              <span className="bg-[linear-gradient(90deg,var(--color-gold-70),var(--color-gold))] bg-clip-text text-transparent">
+              {/* Staging experiment: B16406 -> D68A2E. Display size only. */}
+              <span className="bg-[linear-gradient(90deg,#B16406,#D68A2E)] bg-clip-text text-transparent">
                 {hero.titleAccent}
               </span>
             </h1>
